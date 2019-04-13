@@ -2,8 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fe2cf54-0fe4-4ff7-a376-7a60264f8321" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dominio/pessoa/TipoDePessoa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/Renda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dulcedomum/dominio/familia/pessoa/RendaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/app/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dominio/pessoa/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dominio/pessoa/TipoDePessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/TipoDePessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/app/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dominio/pessoa/PessoaTeste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dulcedomum/dominio/familia/pessoa/PessoaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/app/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dominio/pessoa/Pessoa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dominio/pessoa/TipoDePessoa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dulce-domum-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/dulce-domum-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.mycompany.app.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.mycompany.app.AppTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/mycompany/app/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/dominio/pessoa/PessoaTeste.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,20 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/dulcedomum/dominio/familia/pessoa/RendaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/dominio/pessoa/PessoaTeste.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="764">
+              <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,26 +49,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dominio/pessoa/TipoDePessoa.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/Renda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dominio/pessoa/Pessoa.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-222">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="513">
+              <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
               <folding>
-                <element signature="e#246#247#0" expanded="true" />
-                <element signature="e#273#274#0" expanded="true" />
-                <element signature="e#446#447#0" expanded="true" />
-                <element signature="e#473#474#0" expanded="true" />
-                <element signature="e#593#594#0" expanded="true" />
-                <element signature="e#618#619#0" expanded="true" />
+                <element signature="e#344#345#0" expanded="true" />
+                <element signature="e#371#372#0" expanded="true" />
+                <element signature="e#382#383#0" expanded="true" />
+                <element signature="e#409#410#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,6 +91,9 @@
         <option value="$PROJECT_DIR$/src/main/java/dominio/pessoa/TipoDePessoa.java" />
         <option value="$PROJECT_DIR$/src/main/java/dominio/pessoa/Pessoa.java" />
         <option value="$PROJECT_DIR$/src/test/java/dominio/pessoa/PessoaTeste.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dulcedomum/App.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/dulcedomum/dominio/familia/pessoa/RendaTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/Renda.java" />
       </list>
     </option>
   </component>
@@ -130,7 +131,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -186,10 +186,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="pessoa" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="dulce-domum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dulce-domum" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -199,7 +205,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555168024192" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555170402234" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../CheffEscolar" />
@@ -212,9 +218,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.dulcedomum.dominio" />
+      <recent name="com.dulcedomum" />
       <recent name="main.java" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.dulcedomum.dominio.familia.pessoa" />
       <recent name="dominio.pessoa" />
       <recent name="main.java.dominio" />
     </key>
@@ -231,80 +240,76 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PessoaTeste">
+  <component name="RunManager" selected="JUnit.RendaTest">
+    <configuration name="PessoaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dulce-domum" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dulcedomum.dominio.familia.pessoa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dulcedomum.dominio.familia.pessoa" />
+      <option name="MAIN_CLASS_NAME" value="com.dulcedomum.dominio.familia.pessoa.PessoaTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PessoaTest.deveTerUmaDataDeNascimento" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dulce-domum" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dulcedomum.dominio.familia.pessoa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dulcedomum.dominio.familia.pessoa" />
+      <option name="MAIN_CLASS_NAME" value="com.dulcedomum.dominio.familia.pessoa.PessoaTest" />
+      <option name="METHOD_NAME" value="deveTerUmaDataDeNascimento" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PessoaTeste" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dulce-domum" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dominio.pessoa.*" />
+          <option name="PATTERN" value="com.dulcedomum.dominio.pessoa.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="dominio.pessoa" />
-      <option name="MAIN_CLASS_NAME" value="dominio.pessoa.PessoaTeste" />
+      <option name="MAIN_CLASS_NAME" value="com.dulcedomum.pessoa.PessoaTeste" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PessoaTeste.deveTerUmNome (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RendaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dulce-domum" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dominio.pessoa.*" />
+          <option name="PATTERN" value="com.dulcedomum.dominio.familia.pessoa.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dominio.pessoa" />
-      <option name="MAIN_CLASS_NAME" value="dominio.pessoa.PessoaTeste" />
-      <option name="METHOD_NAME" value="deveTerUmNome" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.dulcedomum.dominio.familia.pessoa" />
+      <option name="MAIN_CLASS_NAME" value="com.dulcedomum.dominio.familia.pessoa.RendaTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PessoaTeste.deveTerUmTipo (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RendaTest.deveTerOValorEmReais" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dulce-domum" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dominio.pessoa.*" />
+          <option name="PATTERN" value="com.dulcedomum.dominio.familia.pessoa.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dominio.pessoa" />
-      <option name="MAIN_CLASS_NAME" value="dominio.pessoa.PessoaTeste" />
-      <option name="METHOD_NAME" value="deveTerUmTipo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PessoaTeste.deveTerUmTipo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dulce-domum" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.dominio.pessoa.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.dominio.pessoa" />
-      <option name="MAIN_CLASS_NAME" value="test.java.dominio.pessoa.PessoaTeste" />
-      <option name="METHOD_NAME" value="deveTerUmTipo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PessoaTeste.deveTerUmaDataDeNascimento" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dulce-domum" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dominio.pessoa.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dominio.pessoa" />
-      <option name="MAIN_CLASS_NAME" value="dominio.pessoa.PessoaTeste" />
-      <option name="METHOD_NAME" value="deveTerUmaDataDeNascimento" />
+      <option name="PACKAGE_NAME" value="com.dulcedomum.dominio.familia.pessoa" />
+      <option name="MAIN_CLASS_NAME" value="com.dulcedomum.dominio.familia.pessoa.RendaTest" />
+      <option name="METHOD_NAME" value="deveTerOValorEmReais" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -312,11 +317,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RendaTest" />
+        <item itemvalue="JUnit.RendaTest.deveTerOValorEmReais" />
+        <item itemvalue="JUnit.PessoaTest" />
+        <item itemvalue="JUnit.PessoaTest.deveTerUmaDataDeNascimento" />
         <item itemvalue="JUnit.PessoaTeste" />
-        <item itemvalue="JUnit.PessoaTeste.deveTerUmaDataDeNascimento" />
-        <item itemvalue="JUnit.PessoaTeste.deveTerUmTipo (1)" />
-        <item itemvalue="JUnit.PessoaTeste.deveTerUmNome (1)" />
-        <item itemvalue="JUnit.PessoaTeste.deveTerUmTipo" />
       </list>
     </recent_temporary>
   </component>
@@ -335,17 +340,12 @@
       <workItem from="1554681073318" duration="1590000" />
       <workItem from="1554955271309" duration="574000" />
       <workItem from="1554955888087" duration="410000" />
-      <workItem from="1555166399851" duration="1755000" />
+      <workItem from="1555166399851" duration="3115000" />
+      <workItem from="1555169764236" duration="632000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PessoaTeste_deveTerUmNome - 2019.04.07 at 10h 34m 24s.xml">
-      <configuration name="PessoaTeste.deveTerUmNome" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PessoaTeste_deveTerUmNome - 2019.04.07 at 10h 34m 54s.xml">
-      <configuration name="PessoaTeste.deveTerUmNome" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PessoaTeste_deveTerUmNome_(1) - 2019.04.11 at 00h 15m 58s.xml">
       <configuration name="PessoaTeste.deveTerUmNome (1)" configurationId="JUnit" />
     </history-entry>
@@ -370,14 +370,30 @@
     <history-entry file="PessoaTeste - 2019.04.13 at 11h 07m 05s.xml">
       <configuration name="PessoaTeste" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PessoaTest_deveTerUmaDataDeNascimento - 2019.04.13 at 11h 31m 49s.xml">
+      <configuration name="PessoaTest.deveTerUmaDataDeNascimento" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PessoaTest - 2019.04.13 at 11h 31m 53s.xml">
+      <configuration name="PessoaTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11044000" />
+    <option name="totallyTimeSpent" value="13036000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18215159" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18459658" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -385,7 +401,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32922733" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32922733" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -394,7 +410,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32922733" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32922733" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32922733" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.33679354" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -413,55 +429,73 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="jrt://C:/Program Files/Java/jdk-11.0.2!/java.base/java/util/function/Predicate.class" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/mycompany/app/AppTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/dulcedomum/AppTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mycompany/app/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dominio/pessoa/TipoDePessoa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/dominio/pessoa/PessoaTeste.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="243">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dominio/pessoa/Pessoa.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dulcedomum/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-222">
+        <state relative-caret-position="270">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/Pessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/TipoDePessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/dulcedomum/dominio/familia/pessoa/PessoaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
-            <element signature="e#246#247#0" expanded="true" />
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#446#447#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dulcedomum/dominio/familia/pessoa/Renda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+          <folding>
+            <element signature="e#344#345#0" expanded="true" />
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
+            <element signature="e#409#410#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/dulcedomum/dominio/familia/pessoa/RendaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="764">
+          <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

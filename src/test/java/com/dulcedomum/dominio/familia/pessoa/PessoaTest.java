@@ -1,4 +1,4 @@
-package dominio.pessoa;
+package com.dulcedomum.dominio.familia.pessoa;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PessoaTeste {
+public class PessoaTest {
 
     private String id;
     private String nome;

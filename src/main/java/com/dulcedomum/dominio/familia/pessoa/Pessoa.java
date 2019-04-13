@@ -1,4 +1,4 @@
-package dominio.pessoa;
+package com.dulcedomum.dominio.familia.pessoa;
 
 import java.time.LocalDate;
 

@@ -1,3 +1,3 @@
-dominio\pessoa\TipoDePessoa.class
-com\mycompany\app\App.class
-dominio\pessoa\Pessoa.class
+com\dulcedomum\dominio\familia\pessoa\Pessoa.class
+com\dulcedomum\dominio\familia\pessoa\TipoDePessoa.class
+com\dulcedomum\App.class
