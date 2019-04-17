@@ -16,7 +16,7 @@ public class FamiliaBuilder {
     private List<Renda> rendas = singletonList(RendaBuilder.novo().criar());
     private StatusDaFamilia status = StatusDaFamilia.CADASTRO_INCOMPLETO_OU_IRREGULAR;
 
-    public FamiliaBuilder novo() {
+    public static FamiliaBuilder novo() {
         return new FamiliaBuilder();
     }
 
