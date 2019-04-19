@@ -1,4 +1,6 @@
-package com.dulcedomum.dominio.familia;
+package com.dulcedomum.dominio.familia.pontuacao;
+
+import com.dulcedomum.dominio.familia.Familia;
 
 import java.util.List;
 

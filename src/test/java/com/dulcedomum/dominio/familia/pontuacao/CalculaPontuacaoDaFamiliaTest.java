@@ -1,5 +1,6 @@
-package com.dulcedomum.dominio.familia;
+package com.dulcedomum.dominio.familia.pontuacao;
 
+import com.dulcedomum.dominio.familia.*;
 import org.junit.Test;
 
 import java.util.Arrays;

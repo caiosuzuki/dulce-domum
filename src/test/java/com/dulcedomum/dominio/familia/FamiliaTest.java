@@ -8,6 +8,7 @@ import com.dulcedomum.dominio.familia.pessoa.renda.RendaBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -98,5 +99,20 @@ public class FamiliaTest {
         assertThat(excecaoLancada)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Não é possível registrar uma família com mais de um cônjuge.");
+    }
+
+    @Test
+    public void deveCalcularOValorTotalDaRendaDaFamilia() {
+        BigDecimal valorDaPrimeiraRenda = BigDecimal.valueOf(900);
+        Renda primeiraRenda = RendaBuilder.novo().comValor(valorDaPrimeiraRenda).criar();
+        BigDecimal valorDaSegundaRenda = BigDecimal.valueOf(1200);
+        Renda segundaRenda = RendaBuilder.novo().comValor(valorDaSegundaRenda).criar();
+        List<Renda> rendas = asList(primeiraRenda, segundaRenda);
+        BigDecimal valorTotalDaRendaEsperado = valorDaPrimeiraRenda.add(valorDaSegundaRenda);
+        Familia familia = FamiliaBuilder.novo().comRendas(rendas).criar();
+
+        BigDecimal valorTotalDaRendaCalculado = familia.calcularValorTotalDaRenda();
+
+        assertThat(valorTotalDaRendaCalculado).isEqualTo(valorTotalDaRendaEsperado);
     }
 }

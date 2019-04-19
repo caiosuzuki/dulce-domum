@@ -14,7 +14,7 @@ public class FamiliaBuilder {
     private String familiaId = UUID.randomUUID().toString();
     private List<Pessoa> pessoas = singletonList(PessoaBuilder.novo().criar());
     private List<Renda> rendas = singletonList(RendaBuilder.novo().criar());
-    private StatusDaFamilia status = StatusDaFamilia.CADASTRO_INCOMPLETO_OU_IRREGULAR;
+    private StatusDaFamilia status = StatusDaFamilia.CADASTRO_INCOMPLETO;
 
     public static FamiliaBuilder novo() {
         return new FamiliaBuilder();

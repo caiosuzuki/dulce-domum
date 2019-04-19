@@ -4,6 +4,7 @@ import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,10 @@ public class Familia {
         if (quantidadeDeConjuges > QUANTIDADE_MAXIMA_DE_CONJUGES) {
             throw new IllegalArgumentException("Não é possível registrar uma família com mais de um cônjuge.");
         }
+    }
+
+    public BigDecimal calcularValorTotalDaRenda() {
+        return rendas.stream().map(renda -> renda.getValor()).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public String getId() {
