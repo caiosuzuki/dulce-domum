@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,7 +36,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
                 .comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS - 1)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaInferiorAoValorLimiteDaCotaDe5Pontos)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -46,7 +48,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
         Renda rendaExatamenteNoLimiteDaCotaDe5Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaExatamenteNoLimiteDaCotaDe5Pontos)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -58,7 +61,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
                 .comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS + 1)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(renda1RealAcimaDoLimiteDaCotaDe5Pontos)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -69,7 +73,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
         Renda rendaInferiorAoValorLimiteDaCotaDe3Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS - 1)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaInferiorAoValorLimiteDaCotaDe3Pontos)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -80,7 +85,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
         Renda rendaNoLimiteDaCotaDe3Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaNoLimiteDaCotaDe3Pontos)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -91,7 +97,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
         Renda renda1RealSuperiorAoValorLimiteDaCotaDe3Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS + 1)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(renda1RealSuperiorAoValorLimiteDaCotaDe3Pontos)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -102,7 +109,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
         Renda rendaInferiorAoValorLimiteDaCotaDe1Ponto = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO - 1)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaInferiorAoValorLimiteDaCotaDe1Ponto)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -113,7 +121,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
         Renda rendaNoLimiteParaDaCotaDe1Ponto = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaNoLimiteParaDaCotaDe1Ponto)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
@@ -124,7 +133,8 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
         Renda rendaMaiorQueOLimiteDaCotaDe1Ponto = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO + 1)).criar();
         Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaMaiorQueOLimiteDaCotaDe1Ponto)).criar();
 
-        int pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
+        Map<String, Integer> mapaDePontuacoes = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacoesPeloCriterio(singletonList(familia));
+        Integer pontuacaoObtida = mapaDePontuacoes.get(familia.getId());
 
         assertThat(pontuacaoObtida).isEqualTo(pontuacaoEsperada);
     }
