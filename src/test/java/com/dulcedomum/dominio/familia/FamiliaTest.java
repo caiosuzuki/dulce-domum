@@ -85,4 +85,18 @@ public class FamiliaTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Não é possível registrar uma família sem um pretendente.");
     }
+
+    @Test
+    public void naoDeveCriarUmaFamiliaComMaisDeUmConjuge() {
+        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
+        Pessoa primeiroConjuge = PessoaBuilder.novo().comTipo(TipoDePessoa.CONJUGE).criar();
+        Pessoa segundoConjuge = PessoaBuilder.novo().comTipo(TipoDePessoa.CONJUGE).criar();
+        List<Pessoa> pessoasDaFamilia = asList(pretendente, primeiroConjuge, segundoConjuge);
+        
+        Throwable excecaoLancada = catchThrowable(() -> Familia.criar(familiaId, pessoasDaFamilia, rendas, status));
+        
+        assertThat(excecaoLancada)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Não é possível registrar uma família com mais de um cônjuge.");
+    }
 }
