@@ -1,7 +1,7 @@
 package com.dulcedomum.dominio.familia;
 
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
-import com.dulcedomum.dominio.familia.pessoa.Renda;
+import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 
 import java.util.List;

@@ -2,8 +2,8 @@ package com.dulcedomum.dominio.familia;
 
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.PessoaBuilder;
-import com.dulcedomum.dominio.familia.pessoa.Renda;
-import com.dulcedomum.dominio.familia.pessoa.RendaBuilder;
+import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
+import com.dulcedomum.dominio.familia.pessoa.renda.RendaBuilder;
 
 import java.util.List;
 import java.util.UUID;

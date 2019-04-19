@@ -1,4 +1,4 @@
-package com.dulcedomum.dominio.familia.pessoa;
+package com.dulcedomum.dominio.familia.pessoa.renda;
 
 import java.math.BigDecimal;
 import java.util.UUID;

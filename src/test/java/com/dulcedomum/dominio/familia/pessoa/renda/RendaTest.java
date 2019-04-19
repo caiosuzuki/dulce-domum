@@ -1,5 +1,6 @@
 package com.dulcedomum.dominio.familia.pessoa;
 
+import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 import org.junit.Before;
 import org.junit.Test;
 
