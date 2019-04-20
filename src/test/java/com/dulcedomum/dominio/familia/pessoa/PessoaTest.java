@@ -4,9 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class PessoaTest {
 
@@ -111,11 +113,21 @@ public class PessoaTest {
 
     @Test
     public void naoDeveCriarUmaPessoaSemDataDeNascimento() {
-        LocalDate dataDeNascimentoInvalida= null;
+        LocalDate dataDeNascimentoInvalida = null;
 
         Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(id, nome, tipo, dataDeNascimentoInvalida));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar a data de nascimento da pessoa para registrá-la.");
+    }
+
+    @Test
+    public void deveRetornarAIdadeDaPessoa() {
+        Pessoa pessoa = PessoaBuilder.novo().comDataDeNascimento(dataDeNascimento).criar();
+        int idadeEsperada = Period.between(dataDeNascimento, LocalDate.now()).getYears();
+
+        int idadeRetornada = pessoa.getIdade();
+
+        assertThat(idadeRetornada).isEqualTo(idadeEsperada);
     }
 }

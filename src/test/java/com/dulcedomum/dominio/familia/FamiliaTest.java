@@ -56,7 +56,7 @@ public class FamiliaTest {
 
     @Test
     public void devePossuirRendas() {
-        Renda rendaEsperada =  RendaBuilder.novo().criar();
+        Renda rendaEsperada = RendaBuilder.novo().criar();
         List<Renda> rendas = singletonList(rendaEsperada);
 
         Familia familia = Familia.criar(familiaId, pessoasDaFamilia, rendas, status);
@@ -93,9 +93,9 @@ public class FamiliaTest {
         Pessoa primeiroConjuge = PessoaBuilder.novo().comTipo(TipoDePessoa.CONJUGE).criar();
         Pessoa segundoConjuge = PessoaBuilder.novo().comTipo(TipoDePessoa.CONJUGE).criar();
         List<Pessoa> pessoasDaFamilia = asList(pretendente, primeiroConjuge, segundoConjuge);
-        
+
         Throwable excecaoLancada = catchThrowable(() -> Familia.criar(familiaId, pessoasDaFamilia, rendas, status));
-        
+
         assertThat(excecaoLancada)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Não é possível registrar uma família com mais de um cônjuge.");
@@ -114,5 +114,18 @@ public class FamiliaTest {
         BigDecimal valorTotalDaRendaCalculado = familia.calcularValorTotalDaRenda();
 
         assertThat(valorTotalDaRendaCalculado).isEqualTo(valorTotalDaRendaEsperado);
+    }
+
+    @Test
+    public void deveRetornarOPretendenteDaFamilia() {
+        Pessoa conjuge = PessoaBuilder.novo().comTipo(TipoDePessoa.CONJUGE).criar();
+        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
+        Pessoa dependente = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).criar();
+        List<Pessoa> pessoasDaFamilia = asList(dependente, conjuge, pretendente);
+        Familia familia = FamiliaBuilder.novo().comPessoas(pessoasDaFamilia).criar();
+
+        Pessoa pessoaRetornada = familia.getPretendente().get();
+
+        assertThat(pessoaRetornada).isEqualTo(pretendente);
     }
 }

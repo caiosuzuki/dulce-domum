@@ -1,6 +1,7 @@
 package com.dulcedomum.dominio.familia.pessoa;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Pessoa {
 
@@ -53,5 +54,9 @@ public class Pessoa {
 
     public String id() {
         return id;
+    }
+
+    public int getIdade() {
+        return Period.between(this.dataDeNascimento, LocalDate.now()).getYears();
     }
 }

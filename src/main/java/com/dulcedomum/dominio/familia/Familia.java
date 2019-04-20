@@ -68,4 +68,8 @@ public class Familia {
     public StatusDaFamilia getStatus() {
         return status;
     }
+
+    public Optional<Pessoa> getPretendente() {
+        return this.pessoas.stream().filter(pessoa -> pessoa.getTipo().equals(TipoDePessoa.PRETENDENTE)).findAny();
+    }
 }

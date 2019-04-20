@@ -18,8 +18,23 @@ public class PessoaBuilder {
         return new PessoaBuilder();
     }
 
+    public PessoaBuilder comId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public PessoaBuilder comNome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
     public PessoaBuilder comTipo(TipoDePessoa tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public PessoaBuilder comDataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
         return this;
     }
 }
