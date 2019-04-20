@@ -4,7 +4,6 @@ import com.dulcedomum.dominio.familia.Familia;
 import com.dulcedomum.dominio.familia.FamiliaBuilder;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.PessoaBuilder;
-import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,18 +26,6 @@ public class AvaliadorDeCriterioDeIdadeDoPretendenteTest {
     }
 
     @Test
-    public void devePontuarComoFavorecidoAFamiliaQuandoAListagemTiverApenasUmaFamilia() {
-        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
-        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pretendente)).criar();
-        List<Familia> familias = singletonList(familia);
-
-        Map<String, Integer> mapaDeFamiliaIdsEPontuacoes = avaliadorDeCriterioDeIdadeDoPretendente.calcularPontuacoesPeloCriterio(familias);
-        Integer pontuacaoObtida = mapaDeFamiliaIdsEPontuacoes.get(familia.getId());
-
-        assertThat(pontuacaoObtida).isEqualTo(PONTUACAO_DE_FAVORECIDO);
-    }
-
-    @Test
     public void devePontuarComoFavorecidoApenasAFamiliaQueTemOPretendenteMaisVelho() {
         LocalDate dataDeNascimentoDoPretendenteMaisVelho = LocalDate.of(1980, 3, 2);
         Pessoa pretendenteMaisVelho = PessoaBuilder.novo().comDataDeNascimento(dataDeNascimentoDoPretendenteMaisVelho).criar();
@@ -50,7 +37,6 @@ public class AvaliadorDeCriterioDeIdadeDoPretendenteTest {
 
         Map<String, Integer> mapaDeFamiliaIdsEPontuacoes = avaliadorDeCriterioDeIdadeDoPretendente.calcularPontuacoesPeloCriterio(familias);
         Integer pontuacaoDaFamiliaComPretendenteMaisVelho = mapaDeFamiliaIdsEPontuacoes.get(familiaComPretendenteMaisVelho.getId());
-        ;
 
         assertThat(pontuacaoDaFamiliaComPretendenteMaisVelho).isEqualTo(PONTUACAO_DE_FAVORECIDO);
     }
