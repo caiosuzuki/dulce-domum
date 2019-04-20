@@ -128,4 +128,17 @@ public class FamiliaTest {
 
         assertThat(pessoaRetornada).isEqualTo(pretendente);
     }
+
+    @Test
+    public void deveRetornarOsDependentesDaFamilia() {
+        Pessoa conjuge = PessoaBuilder.novo().comTipo(TipoDePessoa.CONJUGE).criar();
+        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
+        Pessoa dependente = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).criar();
+        List<Pessoa> pessoasDaFamilia = asList(dependente, conjuge, pretendente);
+        Familia familia = FamiliaBuilder.novo().comPessoas(pessoasDaFamilia).criar();
+
+        List<Pessoa> pessoasRetornadas = familia.getDependentes();
+
+        assertThat(pessoasRetornadas.get(0)).isEqualTo(dependente);
+    }
 }

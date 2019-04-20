@@ -37,4 +37,9 @@ public class PessoaBuilder {
         this.dataDeNascimento = dataDeNascimento;
         return this;
     }
+
+    public PessoaBuilder comIdade(int idade) {
+        this.dataDeNascimento = LocalDate.now().minusYears(idade);
+        return this;
+    }
 }

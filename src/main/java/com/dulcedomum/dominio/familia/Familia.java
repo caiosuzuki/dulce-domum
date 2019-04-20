@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.stream.Collectors.toList;
+
 public class Familia {
 
     private static int QUANTIDADE_MAXIMA_DE_CONJUGES = 1;
@@ -70,6 +72,12 @@ public class Familia {
     }
 
     public Optional<Pessoa> getPretendente() {
-        return this.pessoas.stream().filter(pessoa -> pessoa.getTipo().equals(TipoDePessoa.PRETENDENTE)).findAny();
+        return this.pessoas.stream().filter(pessoa ->
+                pessoa.getTipo().equals(TipoDePessoa.PRETENDENTE)).findAny();
+    }
+
+    public List<Pessoa> getDependentes() {
+        return this.pessoas.stream().filter(pessoa ->
+                pessoa.getTipo().equals(TipoDePessoa.DEPENDENTE)).collect(toList());
     }
 }

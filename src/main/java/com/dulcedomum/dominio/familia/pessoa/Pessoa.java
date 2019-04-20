@@ -56,7 +56,7 @@ public class Pessoa {
         return id;
     }
 
-    public int getIdade() {
+    public Integer getIdade() {
         return Period.between(this.dataDeNascimento, LocalDate.now()).getYears();
     }
 }
