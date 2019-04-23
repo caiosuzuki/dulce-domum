@@ -31,13 +31,13 @@ public class AvaliadorDeCriterioDeQuantidadeDeDependentesTest {
     @Test
     public void devePontuarComoFavorecidoApenasAFamiliaComMaiorNumeroDeDependentes() {
         Pessoa pretendenteDaPrimeiraFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
-        Pessoa dependenteDaPrimeiraFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).criar();
+        Pessoa dependenteDaPrimeiraFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(14).criar();
         List<Pessoa> pessoasDaPrimeiraFamilia = asList(pretendenteDaPrimeiraFamilia, dependenteDaPrimeiraFamilia);
         Familia primeiraFamilia = FamiliaBuilder.novo().comPessoas(pessoasDaPrimeiraFamilia).criar();
 
         Pessoa pretendenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
-        Pessoa primeiroDependenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).criar();
-        Pessoa segundoDependenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).criar();
+        Pessoa primeiroDependenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(16).criar();
+        Pessoa segundoDependenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(15).criar();
         List<Pessoa> pessoasDaSegundaFamilia = asList(primeiroDependenteDaSegundaFamilia, segundoDependenteDaSegundaFamilia, pretendenteDaSegundaFamilia);
         Familia segundaFamilia = FamiliaBuilder.novo().comPessoas(pessoasDaSegundaFamilia).criar();
 
