@@ -1,6 +1,7 @@
 package com.dulcedomum.dominio.familia.pontuacao;
 
 import com.dulcedomum.dominio.familia.Familia;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,7 @@ public class CalculaPontuacoesDasFamiliasConcreto implements CalculaPontuacoesDa
 
     private List<AvaliadorDeCriterioDePontuacoesDasFamilias> avaliadoresDeCriterioDePontuacaoDaFamilia;
 
+    @Autowired
     public CalculaPontuacoesDasFamiliasConcreto(List<AvaliadorDeCriterioDePontuacoesDasFamilias> avaliadoresDeCriterioDePontuacaoDaFamilia) {
         this.avaliadoresDeCriterioDePontuacaoDaFamilia = avaliadoresDeCriterioDePontuacaoDaFamilia;
     }

@@ -2,11 +2,13 @@ package com.dulcedomum.dominio.familia.pontuacao;
 
 import com.dulcedomum.dominio.familia.Familia;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
+@Component
 public class AvaliadorDeCriterioDeIdadeDoPretendente implements AvaliadorDeCriterioDePontuacoesDasFamilias {
 
     private static final int PONTUACAO_DE_FAVORECIDO = 3;

@@ -1,6 +1,7 @@
 package com.dulcedomum.dominio.familia.pontuacao;
 
 import com.dulcedomum.dominio.familia.Familia;
+import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Collections.max;
 
+@Component
 public class AvaliadorDeCriterioDeQuantidadeDeDependentes implements AvaliadorDeCriterioDePontuacoesDasFamilias {
     private static final Integer PONTUACAO_DE_FAVORECIDO = 3;
     private static final Integer DEZOITO_ANOS = 18;

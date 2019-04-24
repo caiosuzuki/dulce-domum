@@ -1,12 +1,14 @@
 package com.dulcedomum.dominio.familia.pontuacao;
 
 import com.dulcedomum.dominio.familia.Familia;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class AvaliadorDeCriterioDeRendaTotalDaFamilia implements AvaliadorDeCriterioDePontuacoesDasFamilias {
 
     private static final int VALOR_LIMITE_PARA_PONTUAR_5_PONTOS = 900;
