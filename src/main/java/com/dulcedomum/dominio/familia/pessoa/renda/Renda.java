@@ -1,8 +1,16 @@
 package com.dulcedomum.dominio.familia.pessoa.renda;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
+@Entity
 public class Renda {
+
+    @Id
+    @GeneratedValue
+    private Integer idDoRepositorio;
 
     private String pessoaId;
     private BigDecimal valor;

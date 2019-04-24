@@ -4,18 +4,32 @@ import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
+@Entity
 public class Familia {
 
     private static int QUANTIDADE_MAXIMA_DE_CONJUGES = 1;
+
+    @Id
+    @GeneratedValue
+    private Integer idDoRepositorio;
+
     private String familiaId;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "familia_idDoRepositorio")
     private List<Pessoa> pessoas;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "familia_idDoRepositorio")
     private List<Renda> rendas;
+
     private StatusDaFamilia status;
 
     private Familia(String familiaId,
