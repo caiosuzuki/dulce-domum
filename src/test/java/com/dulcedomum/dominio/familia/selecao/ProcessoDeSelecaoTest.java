@@ -7,6 +7,7 @@ import com.dulcedomum.dominio.familia.pontuacao.CalculaPontuacoesDasFamilias;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,15 +18,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class SelecionaFamiliasTest {
+public class ProcessoDeSelecaoTest {
 
-    private SelecionaFamilias selecionaFamilias;
+    private ProcessoDeSelecao processoDeSelecao;
     private CalculaPontuacoesDasFamilias calculaPontuacoesDasFamilias;
 
     @Before
     public void setUp() throws Exception {
         calculaPontuacoesDasFamilias = mock(CalculaPontuacoesDasFamilias.class);
-        selecionaFamilias = new SelecionaFamiliasConcreto(calculaPontuacoesDasFamilias);
+        processoDeSelecao = new ProcessoDeSelecao(calculaPontuacoesDasFamilias);
     }
 
     @Test
@@ -38,7 +39,7 @@ public class SelecionaFamiliasTest {
         Map<String, Integer> mapaDeFamiliaIdsEPontuacoesCalculadas = montarMapaDeFamiliaIdEPontuacoes(familias, pontuacoes);
         when(calculaPontuacoesDasFamilias.calcular(familias)).thenReturn(mapaDeFamiliaIdsEPontuacoesCalculadas);
 
-        Map<String, Integer> mapaDeFamiliasSelecionado = selecionaFamilias.selecionar(familias);
+        Map<String, Integer> mapaDeFamiliasSelecionado = processoDeSelecao.selecionar(familias);
 
         assertThat(mapaDeFamiliasSelecionado.get(primeiraFamilia.getId())).isEqualTo(mapaDeFamiliaIdsEPontuacoesCalculadas.get(primeiraFamilia.getId()));
         assertThat(mapaDeFamiliasSelecionado.get(segundaFamilia.getId())).isEqualTo(mapaDeFamiliaIdsEPontuacoesCalculadas.get(segundaFamilia.getId()));
@@ -58,16 +59,30 @@ public class SelecionaFamiliasTest {
         when(calculaPontuacoesDasFamilias.calcular(familiasQueNaoForamDesclassificadas))
                 .thenReturn(mapaDeFamiliaIdsEPontuacoesCalculadas);
 
-        Map<String, Integer> mapaDeFamiliasSelecionado = selecionaFamilias.selecionar(familias);
+        Map<String, Integer> mapaDeFamiliasSelecionado = processoDeSelecao.selecionar(familias);
 
         assertThat(mapaDeFamiliasSelecionado).hasSize(1);
         assertThat(mapaDeFamiliasSelecionado.get(familiaComCadastroValido.getId())).isEqualTo(mapaDeFamiliaIdsEPontuacoesCalculadas.get(familiaComCadastroValido.getId()));
     }
 
+    @Test
+    public void deveEncerrarOProcessoDeSelecao() {
+        processoDeSelecao.encerrar();
+
+        assertThat(processoDeSelecao.estaEncerrado()).isTrue();
+    }
+
+    @Test
+    public void devePreencherADataDeEncerramentoComADataAtualAoEncerrarOProcessoDeSelecao() {
+        processoDeSelecao.encerrar();
+
+        assertThat(processoDeSelecao.getDataDeEncerramento()).isEqualTo(LocalDate.now());
+    }
+
     private Map<String, Integer> montarMapaDeFamiliaIdEPontuacoes(List<Familia> familias,
                                                                   List<Integer> pontuacoes) {
         Map<String, Integer> mapaDeFamiliaIdsEPontuacoes = new HashMap<>();
-        for(int indiceDePontuacao = 0; indiceDePontuacao < pontuacoes.size(); indiceDePontuacao++) {
+        for (int indiceDePontuacao = 0; indiceDePontuacao < pontuacoes.size(); indiceDePontuacao++) {
             mapaDeFamiliaIdsEPontuacoes.put(familias.get(indiceDePontuacao).getId(), pontuacoes.get(indiceDePontuacao));
         }
         return mapaDeFamiliaIdsEPontuacoes;
