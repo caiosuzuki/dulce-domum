@@ -3,6 +3,7 @@ package com.dulcedomum.dominio.familia;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
+import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamilia;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -31,6 +32,13 @@ public class Familia {
     private List<Renda> rendas;
 
     private StatusDaFamilia status;
+
+    @AttributeOverrides({
+            @AttributeOverride(name = "quantidadeDeCriteriosAtendidos", column = @Column(name = "dadosDaSelecao_quantidadeDeCriteriosAtendidos")),
+            @AttributeOverride(name = "pontuacao", column = @Column(name = "dadosDaSelecao_pontuacao")),
+            @AttributeOverride(name = "dataDaSelecao", column = @Column(name = "dadosDaSelecao_data"))
+    })
+    private DadosDaSelecaoDaFamilia dadosDaSelecao;
 
     private Familia(String familiaId,
                     List<Pessoa> pessoas,
@@ -93,5 +101,13 @@ public class Familia {
     public List<Pessoa> getDependentes() {
         return this.pessoas.stream().filter(pessoa ->
                 pessoa.getTipo().equals(TipoDePessoa.DEPENDENTE)).collect(toList());
+    }
+
+    public DadosDaSelecaoDaFamilia getDadosDaSelecao() {
+        return dadosDaSelecao;
+    }
+
+    public void setDadosDaSelecao(DadosDaSelecaoDaFamilia dadosDaSelecao) {
+        this.dadosDaSelecao = dadosDaSelecao;
     }
 }

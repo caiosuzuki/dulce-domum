@@ -37,6 +37,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Dependencia usada para fazer pares (Pair) de objetos -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+
+
         <!--Dependências de teste -->
         <!-- Usada para asserts de teste -->
         <dependency>

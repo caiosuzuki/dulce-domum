@@ -7,9 +7,11 @@ import com.dulcedomum.dominio.familia.pontuacao.CalculaPontuacaoDaFamilia;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -67,13 +69,32 @@ public class SelecionaFamiliasServicoDeDominioTest {
         Familia familiaQueJaPossuiCasa = FamiliaBuilder.novo().comStatus(StatusDaFamilia.JA_POSSUI_UMA_CASA).criar();
         Familia familiaSelecionadaEmOutroProcesso = FamiliaBuilder.novo().comStatus(StatusDaFamilia.SELECIONADA_EM_OUTRO_PROCESSO_DE_SELECAO).criar();
         List<Familia> familias = asList(familiaComCadastroValido, familiaComCadastroIncompleto, familiaQueJaPossuiCasa, familiaSelecionadaEmOutroProcesso);
-        int pontuacaoDaFamiliaClassificada = 5;
+        int pontuacaoDaFamiliaSelecionada = 5;
         when(calculaPontuacaoDaFamilia.calcular(any()))
-                .thenReturn(pontuacaoDaFamiliaClassificada);
+                .thenReturn(pontuacaoDaFamiliaSelecionada);
 
         List<Familia> familiasSelecionadas = selecionaFamiliasServicoDeDominio.selecionar(familias);
 
         assertThat(familiasSelecionadas).hasSize(1);
         assertThat(familiasSelecionadas).containsOnly(familiaComCadastroValido);
+    }
+
+    @Test
+    public void deveAtualizarOsDadosDaSelecaoDaFamiliaSelecionada() {
+        int quantidadeDeCriteriosAtendidosEsperada = 3;
+        int pontuacaoEsperada = 10;
+        LocalDate hoje = LocalDate.now();
+        Familia familia = FamiliaBuilder.novo().comStatus(StatusDaFamilia.CADASTRO_VALIDO).criar();
+        when(calculaPontuacaoDaFamilia.calcular(any()))
+                .thenReturn(pontuacaoEsperada);
+        when(calculaPontuacaoDaFamilia.getQuantidadeDeCriteriosAtendidos())
+                .thenReturn(quantidadeDeCriteriosAtendidosEsperada);
+
+        List<Familia> familiasSelecionadas = selecionaFamiliasServicoDeDominio.selecionar(singletonList(familia));
+        DadosDaSelecaoDaFamilia dadosDaSelecaoDaFamilia = familiasSelecionadas.get(0).getDadosDaSelecao();
+
+        assertThat(dadosDaSelecaoDaFamilia.getQuantidadeDeCriteriosAtendidos()).isEqualTo(quantidadeDeCriteriosAtendidosEsperada);
+        assertThat(dadosDaSelecaoDaFamilia.getPontuacao()).isEqualTo(pontuacaoEsperada);
+        assertThat(dadosDaSelecaoDaFamilia.getDataDaSelecao()).isEqualTo(hoje);
     }
 }

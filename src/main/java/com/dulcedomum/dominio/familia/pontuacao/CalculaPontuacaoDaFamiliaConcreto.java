@@ -8,6 +8,7 @@ import java.util.List;
 public class CalculaPontuacaoDaFamiliaConcreto implements CalculaPontuacaoDaFamilia {
 
     private List<AvaliadorDeCriterioDePontuacaoDaFamilia> avaliadoresDeCriterioDePontuacaoDaFamilia;
+    private Integer quantidadeDeCriteriosAtendidos;
 
     @Autowired
     public CalculaPontuacaoDaFamiliaConcreto(List<AvaliadorDeCriterioDePontuacaoDaFamilia> avaliadoresDeCriterioDePontuacaoDaFamilia) {
@@ -16,8 +17,20 @@ public class CalculaPontuacaoDaFamiliaConcreto implements CalculaPontuacaoDaFami
 
     @Override
     public Integer calcular(Familia familia) {
+        this.quantidadeDeCriteriosAtendidos = 0;
         return avaliadoresDeCriterioDePontuacaoDaFamilia.stream()
-                .mapToInt(avaliador -> avaliador.calcularPontuacaoPeloCriterio(familia)).sum();
+                .mapToInt(avaliador -> {
+                    Integer pontuacaoNoCriterio = avaliador.calcularPontuacaoPeloCriterio(familia);
+                    if (pontuacaoNoCriterio != 0) {
+                        this.quantidadeDeCriteriosAtendidos += 1;
+                    }
+                    return pontuacaoNoCriterio;
+                }).sum();
+    }
+
+    @Override
+    public Integer getQuantidadeDeCriteriosAtendidos() {
+        return quantidadeDeCriteriosAtendidos;
     }
 
 }
