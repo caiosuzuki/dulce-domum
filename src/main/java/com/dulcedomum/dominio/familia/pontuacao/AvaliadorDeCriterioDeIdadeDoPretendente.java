@@ -1,33 +1,26 @@
 package com.dulcedomum.dominio.familia.pontuacao;
 
 import com.dulcedomum.dominio.familia.Familia;
-import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
-
-import static java.util.stream.Collectors.toList;
-
 @Component
-public class AvaliadorDeCriterioDeIdadeDoPretendente implements AvaliadorDeCriterioDePontuacoesDasFamilias {
+public class AvaliadorDeCriterioDeIdadeDoPretendente implements AvaliadorDeCriterioDePontuacaoDaFamilia {
 
-    private static final int PONTUACAO_DE_FAVORECIDO = 3;
+    private static final int PONTUACAO_PARA_PRETENDENTE_DE_45_ANOS_OU_MAIS = 3;
+    private static final int PONTUACAO_PARA_PRETENDENTE_DE_30_A_44_ANOS = 2;
+    private static final int PONTUACAO_PARA_PRETENDENTE_ABAIXO_DE_30_ANOS = 1;
+    private static final int QUARENTA_E_CINCO_ANOS = 45;
+    private static final int TRINTA_ANOS = 30;
 
     @Override
-    public Map<String, Integer> calcularPontuacoesPeloCriterio(List<Familia> familias) {
-        HashMap<String, Integer> mapaDeFamiliaIdsEPontuacoes = new HashMap<>();
-
-        List<Pessoa> pretendentesDasFamilias = familias.stream().map(familia -> familia.getPretendente().get()).collect(toList());
-        Pessoa pretendenteMaisVelho = Collections.max(pretendentesDasFamilias, Comparator.comparing(Pessoa::getIdade));
-        String familiaIdDoPretendenteMaisVelho = obterFamiliaIdDoPretendenteMaisVelho(pretendenteMaisVelho, familias);
-        mapaDeFamiliaIdsEPontuacoes.put(familiaIdDoPretendenteMaisVelho, PONTUACAO_DE_FAVORECIDO);
-
-        return mapaDeFamiliaIdsEPontuacoes;
-    }
-
-    private String obterFamiliaIdDoPretendenteMaisVelho(Pessoa pretendenteMaisVelho, List<Familia> familias) {
-        Optional<Familia> familiaDoPretendenteMaisVelho = familias.stream().filter(familia ->
-                familia.getPretendente().get().equals(pretendenteMaisVelho)).findAny();
-        return familiaDoPretendenteMaisVelho.get().getId();
+    public Integer calcularPontuacaoPeloCriterio(Familia familia) {
+        Integer idadeDoPretendente = familia.getPretendente().get().getIdade();
+        if (idadeDoPretendente.compareTo(QUARENTA_E_CINCO_ANOS) >= 0) {
+            return PONTUACAO_PARA_PRETENDENTE_DE_45_ANOS_OU_MAIS;
+        } else if (idadeDoPretendente.compareTo(TRINTA_ANOS) >= 0) {
+            return PONTUACAO_PARA_PRETENDENTE_DE_30_A_44_ANOS;
+        } else {
+            return PONTUACAO_PARA_PRETENDENTE_ABAIXO_DE_30_ANOS;
+        }
     }
 }

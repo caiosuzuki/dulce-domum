@@ -9,17 +9,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AvaliadorDeCriterioDeQuantidadeDeDependentesTest {
 
-    private static final Integer PONTUACAO_DE_FAVORECIDO = 3;
-    private static final Integer PONTUACAO_ZERADA = 0;
     private static final Integer DEZOITO_ANOS = 18;
-
+    private static final Integer TRES_PONTOS = 3;
+    private static final Integer DOIS_PONTOS = 2;
+    private static final Integer ZERO_PONTOS = 0;
 
     private AvaliadorDeCriterioDeQuantidadeDeDependentes avaliadorDeCriterioDeQuantidadeDeDependentes;
 
@@ -29,47 +29,52 @@ public class AvaliadorDeCriterioDeQuantidadeDeDependentesTest {
     }
 
     @Test
-    public void devePontuarComoFavorecidoApenasAFamiliaComMaiorNumeroDeDependentes() {
-        Pessoa pretendenteDaPrimeiraFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
-        Pessoa dependenteDaPrimeiraFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(14).criar();
-        List<Pessoa> pessoasDaPrimeiraFamilia = asList(pretendenteDaPrimeiraFamilia, dependenteDaPrimeiraFamilia);
-        Familia primeiraFamilia = FamiliaBuilder.novo().comPessoas(pessoasDaPrimeiraFamilia).criar();
+    public void devePontuar3PontosCasoAFamiliaTenha3OuMaisDependentes() {
+        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
+        Pessoa primeiroDependente = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(DEZOITO_ANOS-1).criar();
+        Pessoa segundoDependente = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(DEZOITO_ANOS-2).criar();
+        Pessoa terceiroDependente = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(DEZOITO_ANOS-3).criar();
+        List<Pessoa> pessoasDaFamilia = asList(pretendente, primeiroDependente, segundoDependente, terceiroDependente);
+        Familia familia = FamiliaBuilder.novo().comPessoas(pessoasDaFamilia).criar();
 
-        Pessoa pretendenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
-        Pessoa primeiroDependenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(16).criar();
-        Pessoa segundoDependenteDaSegundaFamilia = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(15).criar();
-        List<Pessoa> pessoasDaSegundaFamilia = asList(primeiroDependenteDaSegundaFamilia, segundoDependenteDaSegundaFamilia, pretendenteDaSegundaFamilia);
-        Familia segundaFamilia = FamiliaBuilder.novo().comPessoas(pessoasDaSegundaFamilia).criar();
+        Integer pontuacaoObtida = avaliadorDeCriterioDeQuantidadeDeDependentes.calcularPontuacaoPeloCriterio(familia);
 
-        List<Familia> familias = asList(primeiraFamilia, segundaFamilia);
+        assertThat(pontuacaoObtida).isEqualTo(TRES_PONTOS);
+    }
 
-        Map<String, Integer> mapaDeFamiliaIdsEPontuacoes = avaliadorDeCriterioDeQuantidadeDeDependentes.calcularPontuacoesPeloCriterio(familias);
-        Integer pontuacaoDaPrimeiraFamilia = mapaDeFamiliaIdsEPontuacoes.get(primeiraFamilia.getId());
-        Integer pontuacaoDaSegundaFamilia = mapaDeFamiliaIdsEPontuacoes.get(segundaFamilia.getId());
+    @Test
+    public void devePontuar2PontosCasoAFamiliaTenhaEntre1E2Dependentes() {
+        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
+        Pessoa primeiroDependente = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(DEZOITO_ANOS-2).criar();
+        Pessoa segundoDependente = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(DEZOITO_ANOS-3).criar();
+        List<Pessoa> pessoasDaFamilia = asList(pretendente, primeiroDependente, segundoDependente);
+        Familia familia = FamiliaBuilder.novo().comPessoas(pessoasDaFamilia).criar();
 
-        assertThat(pontuacaoDaSegundaFamilia).isEqualTo(PONTUACAO_DE_FAVORECIDO);
-        assertThat(pontuacaoDaPrimeiraFamilia).isEqualTo(PONTUACAO_ZERADA);
+        Integer pontuacaoObtida = avaliadorDeCriterioDeQuantidadeDeDependentes.calcularPontuacaoPeloCriterio(familia);
+
+        assertThat(pontuacaoObtida).isEqualTo(DOIS_PONTOS);
+    }
+
+    @Test
+    public void devePontuar0PontosCasoAFamiliaNaoTenhaDependentes() {
+        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
+        List<Pessoa> pessoasDaFamilia = singletonList(pretendente);
+        Familia familia = FamiliaBuilder.novo().comPessoas(pessoasDaFamilia).criar();
+
+        Integer pontuacaoObtida = avaliadorDeCriterioDeQuantidadeDeDependentes.calcularPontuacaoPeloCriterio(familia);
+
+        assertThat(pontuacaoObtida).isEqualTo(ZERO_PONTOS);
     }
 
     @Test
     public void naoDeveLevarEmConsideracaoDependentesMaioresDe18Anos() {
         Pessoa dependenteDe18Anos = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(DEZOITO_ANOS).criar();
-        Pessoa pretendenteDaFamiliaComDependenteDe18Anos = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
-        List<Pessoa> pessoasDaFamiliaComDependenteDe18Anos = asList(dependenteDe18Anos, pretendenteDaFamiliaComDependenteDe18Anos);
-        Familia familiaComDependenteDe18Anos = FamiliaBuilder.novo().comPessoas(pessoasDaFamiliaComDependenteDe18Anos).criar();
+        Pessoa pretendente = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
+        List<Pessoa> pessoasDaFamilia = asList(dependenteDe18Anos, pretendente);
+        Familia familia = FamiliaBuilder.novo().comPessoas(pessoasDaFamilia).criar();
 
-        Pessoa pretendenteDaFamiliaComMenorDe18 = PessoaBuilder.novo().comTipo(TipoDePessoa.PRETENDENTE).criar();
-        Pessoa dependenteMenorDe18Anos = PessoaBuilder.novo().comTipo(TipoDePessoa.DEPENDENTE).comIdade(DEZOITO_ANOS - 1).criar();
-        List<Pessoa> pessoasDaFamiliaComMenorDe18 = asList(dependenteMenorDe18Anos, pretendenteDaFamiliaComMenorDe18);
-        Familia familiaComDependenteMenorDe18 = FamiliaBuilder.novo().comPessoas(pessoasDaFamiliaComMenorDe18).criar();
+        Integer pontuacaoDaFamiliaComDependenteDe18Anos = avaliadorDeCriterioDeQuantidadeDeDependentes.calcularPontuacaoPeloCriterio(familia);
 
-        List<Familia> familias = asList(familiaComDependenteDe18Anos, familiaComDependenteMenorDe18);
-
-        Map<String, Integer> mapaDeFamiliaIdsEPontuacoes = avaliadorDeCriterioDeQuantidadeDeDependentes.calcularPontuacoesPeloCriterio(familias);
-        Integer pontuacaoDaFamiliaComDependenteDe18Anos = mapaDeFamiliaIdsEPontuacoes.get(familiaComDependenteDe18Anos.getId());
-        Integer pontuacaoDaFamiliaComDependenteMenorDe18 = mapaDeFamiliaIdsEPontuacoes.get(familiaComDependenteMenorDe18.getId());
-
-        assertThat(pontuacaoDaFamiliaComDependenteDe18Anos).isEqualTo(PONTUACAO_ZERADA);
-        assertThat(pontuacaoDaFamiliaComDependenteMenorDe18).isEqualTo(PONTUACAO_DE_FAVORECIDO);
+        assertThat(pontuacaoDaFamiliaComDependenteDe18Anos).isEqualTo(ZERO_PONTOS);
     }
 }

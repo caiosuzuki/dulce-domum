@@ -3,48 +3,32 @@ package com.dulcedomum.dominio.familia.pontuacao;
 import com.dulcedomum.dominio.familia.Familia;
 import org.springframework.stereotype.Component;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-import static java.util.Collections.max;
-
 @Component
-public class AvaliadorDeCriterioDeQuantidadeDeDependentes implements AvaliadorDeCriterioDePontuacoesDasFamilias {
-    private static final Integer PONTUACAO_DE_FAVORECIDO = 3;
+public class AvaliadorDeCriterioDeQuantidadeDeDependentes implements AvaliadorDeCriterioDePontuacaoDaFamilia {
+
     private static final Integer DEZOITO_ANOS = 18;
+    private static final Integer TRES_DEPENDENTES = 3;
+    private static final Integer TRES_PONTOS = 3;
+    private static final Integer UM_DEPENDENTE = 1;
+    private static final Integer DOIS_PONTOS = 2;
+    private static final Integer ZERO_PONTOS = 0;
 
     @Override
-    public Map<String, Integer> calcularPontuacoesPeloCriterio(List<Familia> familias) {
-        HashMap<String, Integer> mapaDeFamiliaIdsEPontuacoes = criarMapaComPontuacoesZeradas(familias);
+    public Integer calcularPontuacaoPeloCriterio(Familia familia) {
 
-        HashMap<String, Integer> mapaDeQuantidadeDeDependentesPorFamilia = new HashMap<>();
-
-        familias.stream().forEach(familia -> {
-            Integer quantidadeDeDependentesMenoresDe18Anos = obterQuantidadeDeDependentesMenoresDe18Anos(familia);
-            mapaDeQuantidadeDeDependentesPorFamilia.put(familia.getId(), quantidadeDeDependentesMenoresDe18Anos);
-        });
-
-        String idDaFamiliaComMaisDependentes = obterFamiliaIdDaFamiliaComMaisDependentes(mapaDeQuantidadeDeDependentesPorFamilia);
-        mapaDeFamiliaIdsEPontuacoes.put(idDaFamiliaComMaisDependentes, PONTUACAO_DE_FAVORECIDO);
-
-        return mapaDeFamiliaIdsEPontuacoes;
-    }
-
-    private HashMap<String, Integer> criarMapaComPontuacoesZeradas(List<Familia> familias) {
-        HashMap<String, Integer> mapaDeFamiliaIdsEPontuacoesZeradas = new HashMap<>();
-        familias.parallelStream().forEach(familia -> mapaDeFamiliaIdsEPontuacoesZeradas.put(familia.getId(), 0));
-        return mapaDeFamiliaIdsEPontuacoesZeradas;
+        Integer quantidadeDeDependentesMenoresDe18Anos = obterQuantidadeDeDependentesMenoresDe18Anos(familia);
+        if (quantidadeDeDependentesMenoresDe18Anos.compareTo(TRES_DEPENDENTES) >= 0) {
+            return TRES_PONTOS;
+        } else if (quantidadeDeDependentesMenoresDe18Anos.compareTo(UM_DEPENDENTE) >= 0) {
+            return DOIS_PONTOS;
+        }
+        return ZERO_PONTOS;
     }
 
     private Integer obterQuantidadeDeDependentesMenoresDe18Anos(Familia familia) {
         return familia.getDependentes().stream().filter(pessoa ->
                 pessoa.getIdade().compareTo(DEZOITO_ANOS) < 0).collect(Collectors.toList()).size();
-    }
-
-    private String obterFamiliaIdDaFamiliaComMaisDependentes(HashMap<String, Integer> mapaDeQuantidadeDeDependentesPorFamilia) {
-        return max(mapaDeQuantidadeDeDependentesPorFamilia.entrySet(), Comparator.comparing(Map.Entry::getValue)).getKey();
     }
 }
