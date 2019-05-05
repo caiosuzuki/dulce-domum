@@ -1,18 +1,18 @@
 package com.dulcedomum.dominio.familia;
 
 public enum StatusDaFamilia {
-    CADASTRO_VALIDO(0),
-    JA_POSSUI_UMA_CASA(1),
-    SELECIONADA_EM_OUTRO_PROCESSO_DE_SELECAO(2),
-    CADASTRO_INCOMPLETO(3);
+    CADASTRO_VALIDO("0"),
+    JA_POSSUI_UMA_CASA("1"),
+    SELECIONADA_EM_OUTRO_PROCESSO_DE_SELECAO("2"),
+    CADASTRO_INCOMPLETO("3");
 
-    private int codigo;
+    private String codigo;
 
-    StatusDaFamilia (int codigo) {
+    StatusDaFamilia(String codigo) {
         this.codigo = codigo;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 }

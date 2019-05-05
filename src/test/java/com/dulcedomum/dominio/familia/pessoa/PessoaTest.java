@@ -26,66 +26,37 @@ public class PessoaTest {
     }
 
     @Test
-    public void deveTerUmId() {
-        String idEsperado = UUID.randomUUID().toString();
-
-        Pessoa pessoa = Pessoa.criar(idEsperado, nome, tipo, dataDeNascimento);
-
-        assertThat(pessoa.id()).isEqualTo(idEsperado);
-    }
-
-    @Test
     public void deveTerUmNome() {
-        String nomeEsperado = "Sergililsson";
+        String nome = "Sergililsson";
 
-        Pessoa pessoa = Pessoa.criar(id, nomeEsperado, tipo, dataDeNascimento);
+        Pessoa pessoa = Pessoa.criar(nome, tipo, dataDeNascimento);
 
-        assertThat(pessoa.getNome()).isEqualTo(nomeEsperado);
+        assertThat(pessoa.getNome()).isEqualTo(nome);
     }
 
     @Test
     public void deveTerUmTipo() {
-        TipoDePessoa tipoEsperado = TipoDePessoa.PRETENDENTE;
+        TipoDePessoa tipo = TipoDePessoa.PRETENDENTE;
 
-        Pessoa pessoa = Pessoa.criar(id, nome, tipoEsperado, dataDeNascimento);
+        Pessoa pessoa = Pessoa.criar(nome, tipo, dataDeNascimento);
 
-        assertThat(pessoa.getTipo()).isEqualTo(tipoEsperado);
+        assertThat(pessoa.getTipo()).isEqualTo(tipo);
     }
 
     @Test
     public void deveTerUmaDataDeNascimento() {
-        LocalDate dataDeNascimentoEsperada = LocalDate.of(1997, 3, 20);
+        LocalDate dataDeNascimento = LocalDate.of(1997, 3, 20);
 
-        Pessoa pessoa = Pessoa.criar(id, nome, tipo, dataDeNascimentoEsperada);
+        Pessoa pessoa = Pessoa.criar(nome, tipo, dataDeNascimento);
 
-        assertThat(pessoa.getDataDeNascimento()).isEqualTo(dataDeNascimentoEsperada);
-    }
-
-    @Test
-    public void naoDeveCriarUmaPessoaComIdentificadorInvalido() {
-        String idInvalido = null;
-
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(idInvalido, nome, tipo, dataDeNascimento));
-
-        assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Não é possível registrar uma pessoa com identificador inválido.");
-    }
-
-    @Test
-    public void naoDeveCriarUmaPessoaComIdentificadorVazio() {
-        String idVazio = "";
-
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(idVazio, nome, tipo, dataDeNascimento));
-
-        assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Não é possível registrar uma pessoa com identificador vazio.");
+        assertThat(pessoa.getDataDeNascimento()).isEqualTo(dataDeNascimento);
     }
 
     @Test
     public void naoDeveCriarUmaPessoaComNomeInvalido() {
         String nomeInvalido = null;
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(id, nomeInvalido, tipo, dataDeNascimento));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nomeInvalido, tipo, dataDeNascimento));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar o nome da pessoa para registrá-la.");
@@ -95,7 +66,7 @@ public class PessoaTest {
     public void naoDeveCriarUmaPessoaComNomeVazio() {
         String nomeVazio = "";
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(id, nomeVazio, tipo, dataDeNascimento));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nomeVazio, tipo, dataDeNascimento));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar o nome da pessoa para registrá-la.");
@@ -105,7 +76,7 @@ public class PessoaTest {
     public void naoDeveCriarUmaPessoaSemInformarOTipo() {
         TipoDePessoa tipoInvalido = null;
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(id, nome, tipoInvalido, dataDeNascimento));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nome, tipoInvalido, dataDeNascimento));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar o tipo da pessoa para registrá-la.");
@@ -115,7 +86,7 @@ public class PessoaTest {
     public void naoDeveCriarUmaPessoaSemDataDeNascimento() {
         LocalDate dataDeNascimentoInvalida = null;
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(id, nome, tipo, dataDeNascimentoInvalida));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nome, tipo, dataDeNascimentoInvalida));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar a data de nascimento da pessoa para registrá-la.");
@@ -124,10 +95,10 @@ public class PessoaTest {
     @Test
     public void deveRetornarAIdadeDaPessoa() {
         Pessoa pessoa = PessoaBuilder.novo().comDataDeNascimento(dataDeNascimento).criar();
-        int idadeEsperada = Period.between(dataDeNascimento, LocalDate.now()).getYears();
+        int idade = Period.between(dataDeNascimento, LocalDate.now()).getYears();
 
         int idadeRetornada = pessoa.getIdade();
 
-        assertThat(idadeRetornada).isEqualTo(idadeEsperada);
+        assertThat(idadeRetornada).isEqualTo(idade);
     }
 }
