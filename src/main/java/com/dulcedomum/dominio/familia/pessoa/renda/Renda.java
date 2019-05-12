@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 @Entity
 public class Renda {
 
+    public Renda() {
+    }
+
     @Id
     @GeneratedValue
     private Integer idDoRepositorio;

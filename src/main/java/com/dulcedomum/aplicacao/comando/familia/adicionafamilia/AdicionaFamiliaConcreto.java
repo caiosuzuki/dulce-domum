@@ -8,6 +8,7 @@ import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 import com.dulcedomum.infraestrutura.FamiliaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 import static java.util.stream.Collectors.toList;
 
+@Service
 public class AdicionaFamiliaConcreto implements AdicionaFamilia {
 
     private FamiliaRepository familiaRepository;
@@ -29,7 +31,7 @@ public class AdicionaFamiliaConcreto implements AdicionaFamilia {
     public ConfirmacaoDeSucesso executar(AdicionarFamilia comando) {
         List<Pessoa> pessoas = criarPessoas(comando.getPessoasDaFamilia());
         List<Renda> rendas = criarRendas(comando.getRendasDePessoasDaFamilia());
-        StatusDaFamilia statusDaFamilia = StatusDaFamilia.valueOf(comando.getStatus());
+        StatusDaFamilia statusDaFamilia = StatusDaFamilia.getEnumPeloCodigo(comando.getStatus());
         String familiaId = UUID.randomUUID().toString();
         Familia familia = Familia.criar(familiaId, pessoas, rendas, statusDaFamilia);
         familiaRepository.save(familia);
@@ -38,7 +40,7 @@ public class AdicionaFamiliaConcreto implements AdicionaFamilia {
 
     private List<Pessoa> criarPessoas(List<PessoaDaFamilia> pessoasDaFamilia) {
         return pessoasDaFamilia.stream().map(pessoaDaFamilia ->
-                Pessoa.criar(pessoaDaFamilia.getNome(), TipoDePessoa.valueOf(pessoaDaFamilia.getTipo()),
+                Pessoa.criar(pessoaDaFamilia.getNome(), TipoDePessoa.getEnumPelaDescricao(pessoaDaFamilia.getTipo()),
                         pessoaDaFamilia.getDataDeNascimento())).collect(toList());
     }
 

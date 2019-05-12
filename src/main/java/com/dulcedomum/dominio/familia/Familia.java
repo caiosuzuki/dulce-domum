@@ -4,6 +4,8 @@ import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamilia;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,6 +17,9 @@ import static java.util.stream.Collectors.toList;
 @Entity
 public class Familia {
 
+    public Familia() {
+    }
+
     private static int QUANTIDADE_MAXIMA_DE_CONJUGES = 1;
 
     @Id
@@ -23,14 +28,17 @@ public class Familia {
 
     private String familiaId;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     @JoinColumn(name = "familia_idDoRepositorio")
     private List<Pessoa> pessoas;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     @JoinColumn(name = "familia_idDoRepositorio")
     private List<Renda> rendas;
 
+    @Enumerated(EnumType.STRING)
     private StatusDaFamilia status;
 
     @AttributeOverrides({

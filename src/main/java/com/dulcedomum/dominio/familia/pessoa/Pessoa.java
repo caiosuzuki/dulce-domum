@@ -1,20 +1,24 @@
 package com.dulcedomum.dominio.familia.pessoa;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
 
 @Entity
 public class Pessoa {
 
+    public Pessoa() {
+    }
+
     @Id
     @GeneratedValue
     private Integer idDoRepositorio;
 
     private String nome;
+
+    @Enumerated(EnumType.STRING)
     private TipoDePessoa tipo;
+
     private LocalDate dataDeNascimento;
 
     private Pessoa(String nome, TipoDePessoa tipo, LocalDate dataDeNascimento) {

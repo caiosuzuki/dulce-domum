@@ -1,5 +1,8 @@
 package com.dulcedomum.dominio.familia;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum StatusDaFamilia {
     CADASTRO_VALIDO("0"),
     JA_POSSUI_UMA_CASA("1"),
@@ -14,5 +17,11 @@ public enum StatusDaFamilia {
 
     public String getCodigo() {
         return codigo;
+    }
+
+    public static StatusDaFamilia getEnumPeloCodigo(String codigo) {
+        Optional<StatusDaFamilia> statusDaFamiliaEncontrado = Arrays.stream(StatusDaFamilia.values()).filter(statusDaFamilia ->
+                statusDaFamilia.getCodigo().equals(codigo)).findAny();
+        return statusDaFamiliaEncontrado.orElse(null);
     }
 }
