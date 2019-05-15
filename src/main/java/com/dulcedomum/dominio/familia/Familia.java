@@ -2,7 +2,6 @@ package com.dulcedomum.dominio.familia;
 
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
-import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamilia;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -33,11 +32,6 @@ public class Familia {
     @JoinColumn(name = "familia_idDoRepositorio")
     private List<Pessoa> pessoas;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JoinColumn(name = "familia_idDoRepositorio")
-    private List<Renda> rendas;
-
     @Enumerated(EnumType.STRING)
     private StatusDaFamilia status;
 
@@ -48,24 +42,20 @@ public class Familia {
     })
     private DadosDaSelecaoDaFamilia dadosDaSelecao;
 
-    private Familia(String familiaId,
-                    List<Pessoa> pessoas,
-                    List<Renda> rendas,
-                    StatusDaFamilia status) {
+    public Familia(String familiaId, List<Pessoa> pessoas, StatusDaFamilia status) {
         this.familiaId = familiaId;
         this.pessoas = pessoas;
-        this.rendas = rendas;
         this.status = status;
     }
 
     public static Familia criar(String familiaId,
                                 List<Pessoa> pessoas,
-                                List<Renda> rendas,
                                 StatusDaFamilia status) {
         validarSeExisteUmPretendente(pessoas);
         validarSeFamiliaNaoTemMaisDeUmPretendente(pessoas);
-        return new Familia(familiaId, pessoas, rendas, status);
+        return new Familia(familiaId, pessoas, status);
     }
+
 
     private static void validarSeExisteUmPretendente(List<Pessoa> pessoas) {
         Optional<Pessoa> pretendenteEncontrado = pessoas.stream().filter(pessoa -> pessoa.getTipo().equals(TipoDePessoa.PRETENDENTE)).findAny();
@@ -82,7 +72,7 @@ public class Familia {
     }
 
     public BigDecimal calcularValorTotalDaRenda() {
-        return rendas.stream().map(renda -> renda.getValor()).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return pessoas.stream().map(pessoa -> pessoa.getValorDaRenda()).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public String getId() {
@@ -91,10 +81,6 @@ public class Familia {
 
     public List<Pessoa> getPessoas() {
         return pessoas;
-    }
-
-    public List<Renda> getRendas() {
-        return rendas;
     }
 
     public StatusDaFamilia getStatus() {

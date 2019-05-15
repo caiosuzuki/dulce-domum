@@ -4,7 +4,6 @@ import com.dulcedomum.aplicacao.comando.base.ConfirmacaoDeSucesso;
 import com.dulcedomum.aplicacao.comando.familia.adicionafamilia.AdicionaFamilia;
 import com.dulcedomum.aplicacao.comando.familia.adicionafamilia.AdicionarFamilia;
 import com.dulcedomum.aplicacao.comando.familia.adicionafamilia.PessoaDaFamilia;
-import com.dulcedomum.aplicacao.comando.familia.adicionafamilia.RendaDePessoaDaFamilia;
 import com.dulcedomum.aplicacao.comando.familia.selecionafamilias.SelecionaFamilias;
 import com.dulcedomum.aplicacao.comando.familia.selecionafamilias.SelecionarFamilias;
 import com.dulcedomum.apresentacao.recurso.base.ConfirmacaoDeSucessoHttpDTO;
@@ -46,19 +45,12 @@ public class FamiliaRest {
 
     private AdicionarFamilia criarComandoParaAdicionarFamilia(AdicionaFamiliaHttpDTO httpDTO) {
         List<PessoaDaFamilia> pessoasDaFamilia = criarPessoasDaFamilia(httpDTO);
-        List<RendaDePessoaDaFamilia> rendasDePessoasDaFamilia = criarRendasDePessoasDaFamilia(httpDTO);
-        return new AdicionarFamilia(pessoasDaFamilia, rendasDePessoasDaFamilia, httpDTO.status);
+        return new AdicionarFamilia(pessoasDaFamilia, httpDTO.status);
     }
 
     private List<PessoaDaFamilia> criarPessoasDaFamilia(AdicionaFamiliaHttpDTO httpDTO) {
         return httpDTO.pessoasDaFamilia.stream().map(pessoaDaFamiliaHttpDTO ->
-                new PessoaDaFamilia(pessoaDaFamiliaHttpDTO.nome, pessoaDaFamiliaHttpDTO.tipo, pessoaDaFamiliaHttpDTO.dataDeNascimento))
-                .collect(toList());
-    }
-
-    private List<RendaDePessoaDaFamilia> criarRendasDePessoasDaFamilia(AdicionaFamiliaHttpDTO httpDTO) {
-        return httpDTO.rendasDePessoasDaFamilia.stream().map(rendaDePessoaDaFamiliaHttpDTO ->
-                new RendaDePessoaDaFamilia(rendaDePessoaDaFamiliaHttpDTO.pessoaId, rendaDePessoaDaFamiliaHttpDTO.valor))
+                new PessoaDaFamilia(pessoaDaFamiliaHttpDTO.nome, pessoaDaFamiliaHttpDTO.tipo, pessoaDaFamiliaHttpDTO.dataDeNascimento, pessoaDaFamiliaHttpDTO.valorDaRenda))
                 .collect(toList());
     }
 }

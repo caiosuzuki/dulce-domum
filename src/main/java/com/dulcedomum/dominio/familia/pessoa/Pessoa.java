@@ -1,6 +1,7 @@
 package com.dulcedomum.dominio.familia.pessoa;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -15,19 +16,25 @@ public class Pessoa {
     private Integer idDoRepositorio;
 
     private String nome;
+    private LocalDate dataDeNascimento;
+    private BigDecimal valorDaRenda;
 
     @Enumerated(EnumType.STRING)
     private TipoDePessoa tipo;
 
-    private LocalDate dataDeNascimento;
-
-    private Pessoa(String nome, TipoDePessoa tipo, LocalDate dataDeNascimento) {
+    public Pessoa(String nome, TipoDePessoa tipo, LocalDate dataDeNascimento, BigDecimal valorDaRenda) {
         this.nome = nome;
         this.tipo = tipo;
         this.dataDeNascimento = dataDeNascimento;
+        this.valorDaRenda = valorDaRenda;
     }
 
-    private static void validarCamposObrigatorios(String nome, TipoDePessoa tipo, LocalDate dataDeNascimento) {
+    public static Pessoa criar(String nome, TipoDePessoa tipo, LocalDate dataDeNascimento, BigDecimal valorDaRenda) {
+        validarCamposObrigatorios(nome, tipo, dataDeNascimento, valorDaRenda);
+        return new Pessoa(nome, tipo, dataDeNascimento, valorDaRenda);
+    }
+
+    private static void validarCamposObrigatorios(String nome, TipoDePessoa tipo, LocalDate dataDeNascimento, BigDecimal valorDaRenda) {
         if (nome == null || nome.isEmpty()) {
             throw new IllegalArgumentException("É necessário informar o nome da pessoa para registrá-la.");
         }
@@ -37,12 +44,11 @@ public class Pessoa {
         if (dataDeNascimento == null) {
             throw new IllegalArgumentException("É necessário informar a data de nascimento da pessoa para registrá-la.");
         }
+        if (valorDaRenda == null) {
+            throw new IllegalArgumentException("É necessário informar o valor da renda da pessoa para registrá-la.");
+        }
     }
 
-    public static Pessoa criar(String nome, TipoDePessoa tipo, LocalDate dataDeNascimento) {
-        validarCamposObrigatorios(nome, tipo, dataDeNascimento);
-        return new Pessoa(nome, tipo, dataDeNascimento);
-    }
 
     public String getNome() {
         return nome;
@@ -58,5 +64,9 @@ public class Pessoa {
 
     public Integer getIdade() {
         return Period.between(this.dataDeNascimento, LocalDate.now()).getYears();
+    }
+
+    public BigDecimal getValorDaRenda() {
+        return valorDaRenda;
     }
 }

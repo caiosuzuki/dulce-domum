@@ -2,8 +2,8 @@ package com.dulcedomum.dominio.familia.pontuacao;
 
 import com.dulcedomum.dominio.familia.Familia;
 import com.dulcedomum.dominio.familia.FamiliaBuilder;
-import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
-import com.dulcedomum.dominio.familia.pessoa.renda.RendaBuilder;
+import com.dulcedomum.dominio.familia.pessoa.Pessoa;
+import com.dulcedomum.dominio.familia.pessoa.PessoaBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,9 +32,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar5PontosCasoARendaTotalDaFamiliaSejaInferiorAoValorLimiteParaACotaDe5Pontos() {
         int pontuacaoEsperada = CINCO_PONTOS;
-        Renda rendaInferiorAoValorLimiteDaCotaDe5Pontos = RendaBuilder.novo()
-                .comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS - 1)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaInferiorAoValorLimiteDaCotaDe5Pontos)).criar();
+        BigDecimal rendaInferiorAoValorLimiteDaCotaDe5Pontos = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS - 1);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(rendaInferiorAoValorLimiteDaCotaDe5Pontos).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -44,8 +44,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar5PontosCasoARendaTotalDaFamiliaSejaExatamenteOValorLimiteDaCotaDe5Pontos() {
         int pontuacaoEsperada = CINCO_PONTOS;
-        Renda rendaExatamenteNoLimiteDaCotaDe5Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaExatamenteNoLimiteDaCotaDe5Pontos)).criar();
+        BigDecimal rendaExatamenteNoLimiteDaCotaDe5Pontos = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(rendaExatamenteNoLimiteDaCotaDe5Pontos).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -55,9 +56,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar3PontosCasoARendaTotalDaFamiliaFor1RealAcimaDoValorLimiteDaCotaDe5Pontos() {
         int pontuacaoEsperada = TRES_PONTOS;
-        Renda renda1RealAcimaDoLimiteDaCotaDe5Pontos = RendaBuilder.novo()
-                .comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS + 1)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(renda1RealAcimaDoLimiteDaCotaDe5Pontos)).criar();
+        BigDecimal renda1RealAcimaDoLimiteDaCotaDe5Pontos = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_5_PONTOS + 1);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(renda1RealAcimaDoLimiteDaCotaDe5Pontos).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -67,8 +68,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar3PontosCasoARendaTotalDaFamiliaSejaInferiorAoValorLimiteDaCotaDe3Pontos() {
         int pontuacaoEsperada = TRES_PONTOS;
-        Renda rendaInferiorAoValorLimiteDaCotaDe3Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS - 1)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaInferiorAoValorLimiteDaCotaDe3Pontos)).criar();
+        BigDecimal rendaInferiorAoValorLimiteDaCotaDe3Pontos = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS - 1);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(rendaInferiorAoValorLimiteDaCotaDe3Pontos).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -78,8 +80,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar3PontosCasoARendaTotalDaFamiliaSejaExatamenteOValorLimiteDaCotaDe3Pontos() {
         int pontuacaoEsperada = TRES_PONTOS;
-        Renda rendaNoLimiteDaCotaDe3Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaNoLimiteDaCotaDe3Pontos)).criar();
+        BigDecimal rendaNoLimiteDaCotaDe3Pontos = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(rendaNoLimiteDaCotaDe3Pontos).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -89,8 +92,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar1PontoCasoARendaSeja1RealSuperiorACotaDe3Pontos() {
         int pontuacaoEsperada = UM_PONTO;
-        Renda renda1RealSuperiorAoValorLimiteDaCotaDe3Pontos = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS + 1)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(renda1RealSuperiorAoValorLimiteDaCotaDe3Pontos)).criar();
+        BigDecimal renda1RealSuperiorAoValorLimiteDaCotaDe3Pontos = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_3_PONTOS + 1);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(renda1RealSuperiorAoValorLimiteDaCotaDe3Pontos).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -100,8 +104,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar1PontoCasoARendaSejaInferiorAoValorLimiteDaCotaDe1Ponto() {
         int pontuacaoEsperada = UM_PONTO;
-        Renda rendaInferiorAoValorLimiteDaCotaDe1Ponto = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO - 1)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaInferiorAoValorLimiteDaCotaDe1Ponto)).criar();
+        BigDecimal rendaInferiorAoValorLimiteDaCotaDe1Ponto = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO - 1);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(rendaInferiorAoValorLimiteDaCotaDe1Ponto).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -111,8 +116,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar1PontoCasoARendaEstejaNoValorLimiteDaCotaDe1Ponto() {
         int pontuacaoEsperada = UM_PONTO;
-        Renda rendaNoLimiteParaDaCotaDe1Ponto = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaNoLimiteParaDaCotaDe1Ponto)).criar();
+        BigDecimal rendaNoLimiteParaDaCotaDe1Ponto = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(rendaNoLimiteParaDaCotaDe1Ponto).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 
@@ -122,8 +128,9 @@ public class AvaliadorDeCriterioDeRendaTotalDaFamiliaTest {
     @Test
     public void devePontuar0PontosCasoARendaSejaMaiorDoQueOValorLimiteDaCotaDe1Ponto() {
         int pontuacaoEsperada = ZERO_PONTOS;
-        Renda rendaMaiorQueOLimiteDaCotaDe1Ponto = RendaBuilder.novo().comValor(BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO + 1)).criar();
-        Familia familia = FamiliaBuilder.novo().comRendas(singletonList(rendaMaiorQueOLimiteDaCotaDe1Ponto)).criar();
+        BigDecimal rendaMaiorQueOLimiteDaCotaDe1Ponto = BigDecimal.valueOf(VALOR_LIMITE_PARA_PONTUAR_1_PONTO + 1);
+        Pessoa pessoa = PessoaBuilder.novo().comValorDaRenda(rendaMaiorQueOLimiteDaCotaDe1Ponto).criar();
+        Familia familia = FamiliaBuilder.novo().comPessoas(singletonList(pessoa)).criar();
 
         Integer pontuacaoObtida = avaliadorDeCriterioDeRendaTotalDaFamilia.calcularPontuacaoPeloCriterio(familia);
 

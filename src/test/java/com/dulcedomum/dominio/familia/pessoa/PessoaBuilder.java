@@ -1,5 +1,6 @@
 package com.dulcedomum.dominio.familia.pessoa;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class PessoaBuilder {
@@ -7,9 +8,10 @@ public class PessoaBuilder {
     private String nome = "Neide Clovis";
     private TipoDePessoa tipo = TipoDePessoa.PRETENDENTE;
     private LocalDate dataDeNascimento = LocalDate.of(1995, 5, 25);
+    private BigDecimal valorDaRenda = BigDecimal.valueOf(1200.0);
 
     public Pessoa criar() {
-        return Pessoa.criar(nome, tipo, dataDeNascimento);
+        return Pessoa.criar(nome, tipo, dataDeNascimento, valorDaRenda);
     }
 
     public static PessoaBuilder novo() {
@@ -33,6 +35,11 @@ public class PessoaBuilder {
 
     public PessoaBuilder comIdade(int idade) {
         this.dataDeNascimento = LocalDate.now().minusYears(idade);
+        return this;
+    }
+
+    public PessoaBuilder comValorDaRenda(BigDecimal valorDaRenda) {
+        this.valorDaRenda = valorDaRenda;
         return this;
     }
 }

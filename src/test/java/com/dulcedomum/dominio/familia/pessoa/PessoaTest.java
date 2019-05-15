@@ -3,6 +3,7 @@ package com.dulcedomum.dominio.familia.pessoa;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.UUID;
@@ -16,6 +17,7 @@ public class PessoaTest {
     private String nome;
     private TipoDePessoa tipo;
     private LocalDate dataDeNascimento;
+    private BigDecimal valorDaRenda;
 
     @Before
     public void setUp() {
@@ -23,40 +25,24 @@ public class PessoaTest {
         nome = "Jonas Borba";
         tipo = TipoDePessoa.DEPENDENTE;
         dataDeNascimento = LocalDate.of(1990, 5, 3);
+        valorDaRenda = BigDecimal.valueOf(1200.0);
     }
 
     @Test
-    public void deveTerUmNome() {
-        String nome = "Sergililsson";
-
-        Pessoa pessoa = Pessoa.criar(nome, tipo, dataDeNascimento);
+    public void deveCriarUmaPessoa() {
+        Pessoa pessoa = Pessoa.criar(nome, tipo, dataDeNascimento, valorDaRenda);
 
         assertThat(pessoa.getNome()).isEqualTo(nome);
-    }
-
-    @Test
-    public void deveTerUmTipo() {
-        TipoDePessoa tipo = TipoDePessoa.PRETENDENTE;
-
-        Pessoa pessoa = Pessoa.criar(nome, tipo, dataDeNascimento);
-
         assertThat(pessoa.getTipo()).isEqualTo(tipo);
-    }
-
-    @Test
-    public void deveTerUmaDataDeNascimento() {
-        LocalDate dataDeNascimento = LocalDate.of(1997, 3, 20);
-
-        Pessoa pessoa = Pessoa.criar(nome, tipo, dataDeNascimento);
-
         assertThat(pessoa.getDataDeNascimento()).isEqualTo(dataDeNascimento);
+        assertThat(pessoa.getValorDaRenda()).isEqualTo(valorDaRenda);
     }
 
     @Test
     public void naoDeveCriarUmaPessoaComNomeInvalido() {
         String nomeInvalido = null;
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nomeInvalido, tipo, dataDeNascimento));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nomeInvalido, tipo, dataDeNascimento, valorDaRenda));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar o nome da pessoa para registrá-la.");
@@ -66,7 +52,7 @@ public class PessoaTest {
     public void naoDeveCriarUmaPessoaComNomeVazio() {
         String nomeVazio = "";
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nomeVazio, tipo, dataDeNascimento));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nomeVazio, tipo, dataDeNascimento, valorDaRenda));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar o nome da pessoa para registrá-la.");
@@ -76,7 +62,7 @@ public class PessoaTest {
     public void naoDeveCriarUmaPessoaSemInformarOTipo() {
         TipoDePessoa tipoInvalido = null;
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nome, tipoInvalido, dataDeNascimento));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nome, tipoInvalido, dataDeNascimento, valorDaRenda));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar o tipo da pessoa para registrá-la.");
@@ -86,10 +72,20 @@ public class PessoaTest {
     public void naoDeveCriarUmaPessoaSemDataDeNascimento() {
         LocalDate dataDeNascimentoInvalida = null;
 
-        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nome, tipo, dataDeNascimentoInvalida));
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nome, tipo, dataDeNascimentoInvalida, valorDaRenda));
 
         assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("É necessário informar a data de nascimento da pessoa para registrá-la.");
+    }
+
+    @Test
+    public void naoDeveCriarUmaPessoaSemInformarOValorDaRenda() {
+        BigDecimal valorDaRendaInvalido = null;
+
+        Throwable excecaoLancada = catchThrowable(() -> Pessoa.criar(nome, tipo, dataDeNascimento, valorDaRendaInvalido));
+
+        assertThat(excecaoLancada).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("É necessário informar o valor da renda da pessoa para registrá-la.");
     }
 
     @Test

@@ -6,7 +6,6 @@ import com.dulcedomum.dominio.familia.Familia;
 import com.dulcedomum.dominio.familia.FamiliaBuilder;
 import com.dulcedomum.dominio.familia.StatusDaFamilia;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
-import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 import com.dulcedomum.infraestrutura.FamiliaRepository;
 import com.dulcedomum.rest.DesserializadorElementoRest;
 import com.dulcedomum.rest.ElementoRest;
@@ -19,7 +18,6 @@ import org.springframework.http.ResponseEntity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -45,7 +43,6 @@ public class FamiliaRestTest extends TesteDeIntegracao {
 
         assertThat(familiaAdicionada.getStatus().getCodigo()).isEqualTo(adicionaFamiliaHttpDTO.status);
         comparaAtributosDePessoa(familiaAdicionada.getPessoas().get(0), adicionaFamiliaHttpDTO.pessoasDaFamilia.get(0));
-        comparaAtributosDeRenda(familiaAdicionada.getRendas().get(0), adicionaFamiliaHttpDTO.rendasDePessoasDaFamilia.get(0));
     }
 
     @Test
@@ -70,7 +67,6 @@ public class FamiliaRestTest extends TesteDeIntegracao {
     private AdicionaFamiliaHttpDTO criarAdicionaFamiliaHttpDTO() {
         AdicionaFamiliaHttpDTO adicionaFamiliaHttpDTO = new AdicionaFamiliaHttpDTO();
         adicionaFamiliaHttpDTO.pessoasDaFamilia = criarPessoasDaFamiliaHttpDTOs();
-        adicionaFamiliaHttpDTO.rendasDePessoasDaFamilia = criarRendasDePessoasDaFamiliaHttpDTOs();
         adicionaFamiliaHttpDTO.status = "0";
         return adicionaFamiliaHttpDTO;
     }
@@ -80,24 +76,14 @@ public class FamiliaRestTest extends TesteDeIntegracao {
         pessoaDaFamiliaHttpDTO.nome = "Elliot Alderson";
         pessoaDaFamiliaHttpDTO.tipo = "pretendente";
         pessoaDaFamiliaHttpDTO.dataDeNascimento = LocalDate.of(1986, 9, 17);
+        pessoaDaFamiliaHttpDTO.valorDaRenda = BigDecimal.valueOf(1500.0);
         return singletonList(pessoaDaFamiliaHttpDTO);
-    }
-
-    private List<RendaDePessoaDaFamiliaHttpDTO> criarRendasDePessoasDaFamiliaHttpDTOs() {
-        RendaDePessoaDaFamiliaHttpDTO rendaDePessoaDaFamiliaHttpDTO = new RendaDePessoaDaFamiliaHttpDTO();
-        rendaDePessoaDaFamiliaHttpDTO.pessoaId = UUID.randomUUID().toString();
-        rendaDePessoaDaFamiliaHttpDTO.valor = BigDecimal.valueOf(1350.00);
-        return singletonList(rendaDePessoaDaFamiliaHttpDTO);
     }
 
     private void comparaAtributosDePessoa(Pessoa pessoa, PessoaDaFamiliaHttpDTO pessoaDaFamiliaHttpDTO) {
         Assertions.assertThat(pessoa.getNome()).isEqualTo(pessoaDaFamiliaHttpDTO.nome);
         Assertions.assertThat(pessoa.getTipo().getDescricao()).isEqualTo(pessoaDaFamiliaHttpDTO.tipo);
         Assertions.assertThat(pessoa.getDataDeNascimento()).isEqualTo(pessoaDaFamiliaHttpDTO.dataDeNascimento);
-    }
-
-    private void comparaAtributosDeRenda(Renda renda, RendaDePessoaDaFamiliaHttpDTO rendaDePessoaDaFamiliaHttpDTO) {
-        Assertions.assertThat(renda.getValor().floatValue()).isEqualTo(rendaDePessoaDaFamiliaHttpDTO.valor.floatValue());
-        Assertions.assertThat(renda.getPessoaId()).isEqualTo(rendaDePessoaDaFamiliaHttpDTO.pessoaId);
+        Assertions.assertThat(pessoa.getValorDaRenda().floatValue()).isEqualTo(pessoaDaFamiliaHttpDTO.valorDaRenda.floatValue());
     }
 }
