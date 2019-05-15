@@ -2,9 +2,11 @@ package com.dulcedomum.dominio.familia.pontuacao;
 
 import com.dulcedomum.dominio.familia.Familia;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CalculaPontuacaoDaFamiliaConcreto implements CalculaPontuacaoDaFamilia {
 
     private List<AvaliadorDeCriterioDePontuacaoDaFamilia> avaliadoresDeCriterioDePontuacaoDaFamilia;

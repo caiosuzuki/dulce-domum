@@ -5,6 +5,7 @@ import com.dulcedomum.dominio.familia.StatusDaFamilia;
 import com.dulcedomum.dominio.familia.pontuacao.CalculaPontuacaoDaFamilia;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+@Service
 public class SelecionaFamiliasServicoDeDominioConcreto implements SelecionaFamiliasServicoDeDominio {
 
     private static final int QUANTIDADE_MAXIMA_DE_FAMILIAS_SELECIONADAS = 3;

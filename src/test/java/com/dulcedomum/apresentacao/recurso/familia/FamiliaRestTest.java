@@ -3,6 +3,8 @@ package com.dulcedomum.apresentacao.recurso.familia;
 import com.dulcedomum.apresentacao.recurso.base.ConfirmacaoDeSucessoHttpDTO;
 import com.dulcedomum.base.TesteDeIntegracao;
 import com.dulcedomum.dominio.familia.Familia;
+import com.dulcedomum.dominio.familia.FamiliaBuilder;
+import com.dulcedomum.dominio.familia.StatusDaFamilia;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.renda.Renda;
 import com.dulcedomum.infraestrutura.FamiliaRepository;
@@ -19,6 +21,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +34,7 @@ public class FamiliaRestTest extends TesteDeIntegracao {
 
     @Test
     public void deveAdicionarUmaFamilia() {
-        AdicionaFamiliaHttpDTO adicionaFamiliaHttpDTO = criarAdicionaFamiliaHttpDto();
+        AdicionaFamiliaHttpDTO adicionaFamiliaHttpDTO = criarAdicionaFamiliaHttpDTO();
         HttpEntity<AdicionaFamiliaHttpDTO> request = new HttpEntity<>(adicionaFamiliaHttpDTO);
 
         ResponseEntity<String> response = this.restTemplate.postForEntity(RECURSO, request, String.class);
@@ -45,7 +48,26 @@ public class FamiliaRestTest extends TesteDeIntegracao {
         comparaAtributosDeRenda(familiaAdicionada.getRendas().get(0), adicionaFamiliaHttpDTO.rendasDePessoasDaFamilia.get(0));
     }
 
-    private AdicionaFamiliaHttpDTO criarAdicionaFamiliaHttpDto() {
+    @Test
+    public void deveSelecionarAsFamilias() {
+        Familia primeiraFamilia = FamiliaBuilder.novo().comStatus(StatusDaFamilia.CADASTRO_VALIDO).criar();
+        familiaRepository.save(primeiraFamilia);
+        Familia segundaFamilia = FamiliaBuilder.novo().comStatus(StatusDaFamilia.CADASTRO_VALIDO).criar();
+        familiaRepository.save(segundaFamilia);
+        List<String> idsDasFamilias = asList(primeiraFamilia.getId(), segundaFamilia.getId());
+        SelecionaFamiliasHttpDTO selecionaFamiliasHttpDTO = new SelecionaFamiliasHttpDTO();
+        selecionaFamiliasHttpDTO.idsDasFamilias = idsDasFamilias;
+        HttpEntity<SelecionaFamiliasHttpDTO> request = new HttpEntity<>(selecionaFamiliasHttpDTO);
+
+        this.restTemplate.put(RECURSO, request, String.class);
+        Familia primeiraFamiliaSelecionada = familiaRepository.obterPorFamiliaId(primeiraFamilia.getId());
+        Familia segundaFamiliaSelecionada = familiaRepository.obterPorFamiliaId(segundaFamilia.getId());
+
+        assertThat(primeiraFamiliaSelecionada.getDadosDaSelecao()).isNotNull();
+        assertThat(segundaFamiliaSelecionada.getDadosDaSelecao()).isNotNull();
+    }
+
+    private AdicionaFamiliaHttpDTO criarAdicionaFamiliaHttpDTO() {
         AdicionaFamiliaHttpDTO adicionaFamiliaHttpDTO = new AdicionaFamiliaHttpDTO();
         adicionaFamiliaHttpDTO.pessoasDaFamilia = criarPessoasDaFamiliaHttpDTOs();
         adicionaFamiliaHttpDTO.rendasDePessoasDaFamilia = criarRendasDePessoasDaFamiliaHttpDTOs();

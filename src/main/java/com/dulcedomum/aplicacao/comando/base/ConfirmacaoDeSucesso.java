@@ -12,6 +12,10 @@ public class ConfirmacaoDeSucesso {
         return new ConfirmacaoDeSucesso(identificador);
     }
 
+    public static ConfirmacaoDeSucesso criar() {
+        return criar("");
+    }
+
     public String getId() {
         return identificador;
     }

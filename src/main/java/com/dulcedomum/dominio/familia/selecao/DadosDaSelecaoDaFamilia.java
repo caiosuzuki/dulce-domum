@@ -5,12 +5,15 @@ import java.time.LocalDate;
 
 @Embeddable
 public class DadosDaSelecaoDaFamilia {
-    private final Integer quantidadeDeCriteriosAtendidos;
-    private final Integer pontuacao;
-    private final LocalDate dataDaSelecao;
+    private Integer quantidadeDeCriteriosAtendidos;
+    private Integer pontuacao;
+    private LocalDate dataDaSelecao;
+
+    public DadosDaSelecaoDaFamilia() {
+    }
 
     private DadosDaSelecaoDaFamilia(Integer quantidadeDeCriteriosAtendidos,
-                                   Integer pontuacao) {
+                                    Integer pontuacao) {
         this.quantidadeDeCriteriosAtendidos = quantidadeDeCriteriosAtendidos;
         this.pontuacao = pontuacao;
         this.dataDaSelecao = LocalDate.now();
