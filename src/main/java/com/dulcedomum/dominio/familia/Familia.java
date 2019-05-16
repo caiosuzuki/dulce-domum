@@ -1,8 +1,10 @@
 package com.dulcedomum.dominio.familia;
 
+import com.dulcedomum.dominio.familia.eventodedominio.FamiliaSelecionada;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamilia;
+import com.dulcedomum.eventodedominio.NotificadorDeEventoDeDominio;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -101,7 +103,15 @@ public class Familia {
         return dadosDaSelecao;
     }
 
-    public void setDadosDaSelecao(DadosDaSelecaoDaFamilia dadosDaSelecao) {
+    public void selecionar(DadosDaSelecaoDaFamilia dadosDaSelecao) {
+        notificarSobreFamiliaSelecionada(dadosDaSelecao);
         this.dadosDaSelecao = dadosDaSelecao;
+    }
+
+    private void notificarSobreFamiliaSelecionada(DadosDaSelecaoDaFamilia dadosDaSelecao) {
+        FamiliaSelecionada familiaSelecionada = FamiliaSelecionada.criar(this.familiaId,
+                dadosDaSelecao.getQuantidadeDeCriteriosAtendidos(), dadosDaSelecao.getPontuacao(),
+                dadosDaSelecao.getDataDaSelecao());
+        NotificadorDeEventoDeDominio.getNotificadorCorrente().notificarSobre(familiaSelecionada);
     }
 }

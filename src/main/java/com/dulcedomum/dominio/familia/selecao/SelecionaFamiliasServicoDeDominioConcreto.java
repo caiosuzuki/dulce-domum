@@ -30,7 +30,7 @@ public class SelecionaFamiliasServicoDeDominioConcreto implements SelecionaFamil
     public List<Familia> selecionar(List<Familia> familias) {
         List<Familia> familiasComCadastroValido = obterFamiliasComCadastroValido(familias);
         List<Pair<Familia, DadosDaSelecaoDaFamilia>> paresDeFamiliasSelecionadasEDadosDaSelecao = obterParesDeFamiliasSelecionadasComPontuacoes(familiasComCadastroValido);
-        paresDeFamiliasSelecionadasEDadosDaSelecao.forEach(par -> par.getLeft().setDadosDaSelecao(par.getRight()));
+        paresDeFamiliasSelecionadasEDadosDaSelecao.forEach(par -> par.getLeft().selecionar(par.getRight()));
         return paresDeFamiliasSelecionadasEDadosDaSelecao.stream().map(Pair::getLeft).collect(toList());
     }
 

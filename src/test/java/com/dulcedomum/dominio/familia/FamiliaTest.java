@@ -1,10 +1,15 @@
 package com.dulcedomum.dominio.familia;
 
+import com.dulcedomum.dominio.familia.eventodedominio.FamiliaSelecionada;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.PessoaBuilder;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
+import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamilia;
+import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamiliaBuilder;
+import com.dulcedomum.eventodedominio.NotificadorDeEventoDeDominio;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,6 +19,8 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 
 public class FamiliaTest {
 
@@ -122,5 +129,23 @@ public class FamiliaTest {
         List<Pessoa> pessoasRetornadas = familia.getDependentes();
 
         assertThat(pessoasRetornadas.get(0)).isEqualTo(dependente);
+    }
+
+    @Test
+    public void deveNotificarOEventoDeDominioFamiliaSelecionadaAoSelecionarAFamilia() {
+        NotificadorDeEventoDeDominio notificadorDeEventoDeDominio = mock(NotificadorDeEventoDeDominio.class);
+        NotificadorDeEventoDeDominio.setNotificadorDeEventoDeDominioCorrente(notificadorDeEventoDeDominio);
+        ArgumentCaptor<FamiliaSelecionada> capturadorDeArgumento = ArgumentCaptor.forClass(FamiliaSelecionada.class);
+        doNothing().when(notificadorDeEventoDeDominio).notificarSobre(capturadorDeArgumento.capture());
+        Familia familia = FamiliaBuilder.novo().criar();
+        DadosDaSelecaoDaFamilia dadosDaSelecaoDaFamilia = DadosDaSelecaoDaFamiliaBuilder.novo().criar();
+
+        familia.selecionar(dadosDaSelecaoDaFamilia);
+
+        FamiliaSelecionada eventoCapturado = capturadorDeArgumento.getValue();
+        assertThat(eventoCapturado.getFamiliaId()).isEqualTo(familia.getId());
+        assertThat(eventoCapturado.getQuantidadeDeCriteriosAtendidos()).isEqualTo(dadosDaSelecaoDaFamilia.getQuantidadeDeCriteriosAtendidos());
+        assertThat(eventoCapturado.getPontuacaoTotal()).isEqualTo(dadosDaSelecaoDaFamilia.getPontuacao());
+        assertThat(eventoCapturado.getDataDaSelecao()).isEqualTo(dadosDaSelecaoDaFamilia.getDataDaSelecao());
     }
 }
