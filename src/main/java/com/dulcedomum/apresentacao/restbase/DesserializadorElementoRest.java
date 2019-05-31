@@ -1,4 +1,4 @@
-package com.dulcedomum.rest;
+package com.dulcedomum.apresentacao.restbase;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
 
@@ -31,7 +30,7 @@ public class DesserializadorElementoRest extends StdDeserializer<ElementoRest> {
         objectMapper.registerModules(new Module[]{simpleModule});
 
         try {
-            return (ElementoRest)objectMapper.readValue(json, ElementoRest.class);
+            return objectMapper.readValue(json, ElementoRest.class);
         } catch (IOException var5) {
             throw new IllegalArgumentException("Ocorreu um erro ao desserializar o json para o objeto ElementoRest.", var5);
         }
@@ -39,7 +38,7 @@ public class DesserializadorElementoRest extends StdDeserializer<ElementoRest> {
 
     public ElementoRest deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         ObjectCodec codec = jsonParser.getCodec();
-        JsonNode elementoRestJsonNode = (JsonNode)codec.readTree(jsonParser);
+        JsonNode elementoRestJsonNode = codec.readTree(jsonParser);
         return this.obterElementoRest(elementoRestJsonNode);
     }
 
@@ -51,7 +50,6 @@ public class DesserializadorElementoRest extends StdDeserializer<ElementoRest> {
     private Object obterObjetoQueRepresentaOConteudo(JsonNode elementoRestJsonNode) throws IOException {
         String jsonDoConteudoDoElemento = elementoRestJsonNode.get("conteudo").toString();
         ObjectMapper objectMapper = (new MapeadorDeJsonJaxRs()).objectMapper();
-        objectMapper.registerModules(new Module[]{new JavaTimeModule()});
         return objectMapper.readValue(jsonDoConteudoDoElemento, this.classeDoObjetoQueRepresentaOConteudoDoElemento);
     }
 }

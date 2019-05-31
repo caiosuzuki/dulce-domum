@@ -1,4 +1,4 @@
-package com.dulcedomum.eventodedominio;
+package com.dulcedomum.eventodedominiobase;
 
 import org.springframework.context.ApplicationContext;
 

@@ -23,7 +23,7 @@ public class ComunicaAoContempladosDadosDaFamiliaSelecionadaManipuladorDeEventoD
     }
 
     @Test
-    public void devePrintarNoConsoleAsInformacoesDaFamiliaQueFoiSelecionada() {
+    public void devePrintarAsInformacoesDaFamiliaQueFoiSelecionada() {
         manipulador = new ComunicaAoContempladosDadosDaFamiliaSelecionadaManipuladorDeEventoDeDominio();
         String familiaId = UUID.randomUUID().toString();
         Integer quantidadeDeCriteriosAtendidos = 2;

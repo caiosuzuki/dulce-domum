@@ -1,4 +1,4 @@
-package com.dulcedomum.rest;
+package com.dulcedomum.apresentacao.restbase;
 
 public class ElementoRest {
     private Object conteudo;

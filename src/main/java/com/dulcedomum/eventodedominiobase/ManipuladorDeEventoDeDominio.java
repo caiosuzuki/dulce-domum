@@ -1,4 +1,4 @@
-package com.dulcedomum.eventodedominio;
+package com.dulcedomum.eventodedominiobase;
 
 public interface ManipuladorDeEventoDeDominio<Evento extends EventoDeDominio> {
     void manipular(Evento evento);

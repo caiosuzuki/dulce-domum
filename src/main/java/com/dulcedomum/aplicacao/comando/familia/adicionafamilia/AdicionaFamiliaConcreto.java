@@ -5,7 +5,7 @@ import com.dulcedomum.dominio.familia.Familia;
 import com.dulcedomum.dominio.familia.StatusDaFamilia;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
-import com.dulcedomum.infraestrutura.FamiliaRepository;
+import com.dulcedomum.infraestrutura.familia.FamiliaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

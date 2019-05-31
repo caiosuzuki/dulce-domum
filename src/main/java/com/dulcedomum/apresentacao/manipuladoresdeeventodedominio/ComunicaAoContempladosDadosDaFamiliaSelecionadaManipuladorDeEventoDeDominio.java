@@ -1,7 +1,7 @@
 package com.dulcedomum.apresentacao.manipuladoresdeeventodedominio;
 
 import com.dulcedomum.dominio.familia.eventodedominio.FamiliaSelecionada;
-import com.dulcedomum.eventodedominio.ManipuladorDeEventoDeDominio;
+import com.dulcedomum.eventodedominiobase.ManipuladorDeEventoDeDominio;
 import org.springframework.stereotype.Service;
 
 @Service

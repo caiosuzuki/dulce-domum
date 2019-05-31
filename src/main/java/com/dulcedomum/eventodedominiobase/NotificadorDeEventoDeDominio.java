@@ -1,4 +1,4 @@
-package com.dulcedomum.eventodedominio;
+package com.dulcedomum.eventodedominiobase;
 
 public abstract class NotificadorDeEventoDeDominio {
     private static NotificadorDeEventoDeDominio notificadorDeEventoDeDominioCorrente;

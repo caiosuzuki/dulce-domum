@@ -6,7 +6,7 @@ import com.dulcedomum.dominio.familia.pessoa.PessoaBuilder;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamilia;
 import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamiliaBuilder;
-import com.dulcedomum.eventodedominio.NotificadorDeEventoDeDominio;
+import com.dulcedomum.eventodedominiobase.NotificadorDeEventoDeDominio;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;

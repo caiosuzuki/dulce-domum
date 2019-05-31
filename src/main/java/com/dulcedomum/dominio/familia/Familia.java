@@ -4,7 +4,7 @@ import com.dulcedomum.dominio.familia.eventodedominio.FamiliaSelecionada;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.dominio.familia.pessoa.TipoDePessoa;
 import com.dulcedomum.dominio.familia.selecao.DadosDaSelecaoDaFamilia;
-import com.dulcedomum.eventodedominio.NotificadorDeEventoDeDominio;
+import com.dulcedomum.eventodedominiobase.NotificadorDeEventoDeDominio;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 

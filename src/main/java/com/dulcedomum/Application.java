@@ -1,7 +1,7 @@
 package com.dulcedomum;
 
-import com.dulcedomum.eventodedominio.NotificadorDeEventoDeDominio;
-import com.dulcedomum.eventodedominio.NotificadorDeEventoDeDominioPorSpring;
+import com.dulcedomum.eventodedominiobase.NotificadorDeEventoDeDominio;
+import com.dulcedomum.eventodedominiobase.NotificadorDeEventoDeDominioPorSpring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

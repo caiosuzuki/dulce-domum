@@ -1,4 +1,4 @@
-package com.dulcedomum.infraestrutura;
+package com.dulcedomum.infraestrutura.familia;
 
 import com.dulcedomum.dominio.familia.Familia;
 import org.springframework.data.jpa.repository.Query;

@@ -7,7 +7,7 @@ import com.dulcedomum.aplicacao.comando.familia.adicionafamilia.PessoaDaFamilia;
 import com.dulcedomum.aplicacao.comando.familia.selecionafamilias.SelecionaFamilias;
 import com.dulcedomum.aplicacao.comando.familia.selecionafamilias.SelecionarFamilias;
 import com.dulcedomum.apresentacao.recurso.base.ConfirmacaoDeSucessoHttpDTO;
-import com.dulcedomum.rest.ElementoRest;
+import com.dulcedomum.apresentacao.restbase.ElementoRest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;

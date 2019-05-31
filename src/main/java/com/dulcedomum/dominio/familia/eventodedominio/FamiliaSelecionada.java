@@ -1,6 +1,6 @@
 package com.dulcedomum.dominio.familia.eventodedominio;
 
-import com.dulcedomum.eventodedominio.EventoDeDominio;
+import com.dulcedomum.eventodedominiobase.EventoDeDominio;
 
 import java.time.LocalDate;
 

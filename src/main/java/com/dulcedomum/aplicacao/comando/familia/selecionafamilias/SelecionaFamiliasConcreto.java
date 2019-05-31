@@ -3,7 +3,7 @@ package com.dulcedomum.aplicacao.comando.familia.selecionafamilias;
 import com.dulcedomum.aplicacao.comando.base.ConfirmacaoDeSucesso;
 import com.dulcedomum.dominio.familia.Familia;
 import com.dulcedomum.dominio.familia.selecao.SelecionaFamiliasServicoDeDominio;
-import com.dulcedomum.infraestrutura.FamiliaRepository;
+import com.dulcedomum.infraestrutura.familia.FamiliaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
