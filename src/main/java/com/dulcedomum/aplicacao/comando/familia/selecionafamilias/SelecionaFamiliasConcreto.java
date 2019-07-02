@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SelecionaFamiliasConcreto implements SelecionaFamilias{
+public class SelecionaFamiliasConcreto implements SelecionaFamilias {
 
     @Autowired
     private FamiliaRepository familiaRepository;
