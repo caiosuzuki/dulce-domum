@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cadastro de família</title>
+    </head>
+    <body>
+        <h1>Cadastro de família</h1>
+        <div id="formulario-de-dados-da-pessoa">
+            <p>Nome: <input type="text" id="nome-da-pessoa"></p>
+            <p>Tipo:
+                <select name="" id="tipo-de-pessoa">
+                    <option>Pretendente</option>
+                    <option>Cônjuge</option>
+                    <option>Dependente</option>
+                </select>
+            </p>
+            <p>Data de nascimento: <input type="date" id="data-de-nascimento-pessoa"></p>
+            <p>Renda: <input type="number" id="renda-da-pessoa"></p>
+        </div>
+        <p>Situação atual da família: 
+                <select name="" id="situacao-da-familia">
+                    <option>Já possui uma casa.</option>
+                    <option>Está concorrendo em outro processo de seleção.</option>
+                    <option>Nenhuma das opções acima.</option>
+                </select>
+        </p>
+        <p><input type="button" value="Cadastrar mais uma pessoa na família"></p>
+        <p><input type="button" value="Enviar"></p>
+    </body>
+</html>
