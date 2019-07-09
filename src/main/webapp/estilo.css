@@ -31,7 +31,6 @@ td, th {
     content: " ";
     clear: both;
     display: block;
-    /* visibility: none; */
 }
 
 .nome-do-sistema {
