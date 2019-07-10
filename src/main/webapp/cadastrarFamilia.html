@@ -1,33 +1,48 @@
+<!-- Objetivo desta página: aprender a posicionar elementos de um form -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="cadastrarFamilia.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <title>Cadastro de família</title>
     </head>
     <body>
-        <h1>Cadastro de família</h1>
-        <div id="formulario-de-dados-da-pessoa">
-            <p>Nome: <input type="text" id="nome-da-pessoa"></p>
-            <p>Tipo:
-                <select name="" id="tipo-de-pessoa">
-                    <option>Pretendente</option>
-                    <option>Cônjuge</option>
-                    <option>Dependente</option>
-                </select>
-            </p>
-            <p>Data de nascimento: <input type="date" id="data-de-nascimento-pessoa"></p>
-            <p>Renda: <input type="number" id="renda-da-pessoa"></p>
+        <header class="cabecalho">
+            <h1>Cadastro de família</h1>
+            <nav class="menu-de-navegacao">
+                <ul>
+                    <li><a href="paginaInicial.html">Página inicial</a></li>
+                    <li><a href="selecionarFamilias.html">Selecionar famílias</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="formulario">
+            <h2>Pessoa da família</h2>
+            <label for="nome-da-pessoa">Nome:</label>
+            <input type="text" id="nome-da-pessoa"><br>
+            <label for="tipo-de-pessoa">Tipo:</label>
+            <select name="" id="tipo-de-pessoa">
+                <option>Pretendente</option>
+                <option>Cônjuge</option>
+                <option>Dependente</option>
+            </select><br>
+            <label for="data-de-nascimento-pessoa">Data de nascimento:</label>
+            <input type="date" id="data-de-nascimento-pessoa"><br>
+            <label for="renda-da-pessoa">Renda:</label>
+            <input type="number" id="renda-da-pessoa"><br>
+        
+            <label for="situacao-da-familia">Situação atual da família:</label> 
+            <select name="" id="situacao-da-familia">
+                <option></option>
+                <option>Já possui uma casa.</option>
+                <option>Está concorrendo em outro processo de seleção.</option>
+                <option>Nenhuma das opções acima.</option>
+            </select><br>
+            
+            <p><input type="button" value="Cadastrar mais uma pessoa na família" style="float: left; margin-left: 0px"></p>
+            <p><input type="button" value="Enviar" style="margin-left: 50px"></p>
         </div>
-        <p>Situação atual da família: 
-                <select name="" id="situacao-da-familia">
-                    <option>Já possui uma casa.</option>
-                    <option>Está concorrendo em outro processo de seleção.</option>
-                    <option>Nenhuma das opções acima.</option>
-                </select>
-        </p>
-        <p><input type="button" value="Cadastrar mais uma pessoa na família"></p>
-        <p><input type="button" value="Enviar"></p>
     </body>
 </html>

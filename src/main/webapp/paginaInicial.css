@@ -6,6 +6,11 @@ body {
     background: rgb(29, 153, 60);
 }
 
+h1 {
+    margin: 10px 10px;
+    padding: 10px 10px;
+}
+
 h1, h2, h3 {
     text-align: center;
 }
@@ -21,20 +26,16 @@ td, th {
     border: 1px solid black;
 }
 
-.tema-header {
+.cabecalho {
     background: #fff;
     border-radius: 15px;
     margin: 30px 60px;
 }
 
-.tema-header::after{
+.cabecalho::after{
     content: " ";
     clear: both;
     display: block;
-}
-
-.nome-do-sistema {
-    text-align: center;
 }
 
 .menu-de-navegacao {
@@ -43,6 +44,7 @@ td, th {
 
 .menu-de-navegacao ul{
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .menu-de-navegacao ul li {
@@ -63,18 +65,18 @@ td, th {
     padding: 15px;
 }
 
-.apresentacao-do-sistema {
+#apresentacao-do-sistema {
     display: block;
 }
 
-.criterios-de-classificacao {
+#criterios-de-classificacao {
     margin-right: 5px;
     width: 40%;
     max-width: 40%;
     float: left;
 }
 
-.criterios-de-desclassificacao {
+#criterios-de-desclassificacao {
     margin-left: 5px;
     width: 40%;
     max-width: 40%;
