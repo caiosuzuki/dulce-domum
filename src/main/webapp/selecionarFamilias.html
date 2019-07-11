@@ -2,17 +2,30 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="selecionarFamilias.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <title>Seleção de famílias</title>
     </head>
     <body>
-        <h1>Seleção de famílias</h1>
-        <p>Escolha os pretendentes das famílias que devem entrar no processo de seleção:</p>
-        <div id="pretendentes-das-familias">
-            <input type="checkbox" id="checkbox-pretendente">Nome do Pretendente
-        </div>
-        <input type="button" value="Realizar processo de seleção">
+        <header class="cabecalho">
+            <h1>Seleção de famílias</h1>
+            <nav class="menu-de-navegacao">
+                <ul>
+                    <li><a href="paginaInicial.html">Página inicial</a></li>
+                    <li><a href="cadastrarFamilia.html">Cadastrar família</a></li>
+                </ul>
+            </nav>
+        </header>
         
+        <div class="conteudo">
+                <label for="pesquisa-de-pretendente">Digite o pretendente da família a ser incluída na seleção:</label><br>
+                <input type="search" id="pesquisa-de-pretendente" placeholder="Nome do pretendente"><br>
+                <h2>Pretendentes das famílias que já estão incluídas na seleção: </h2>
+                <p>Pretendente exemplo 1</p>
+                <p>Pretendente exemplo 2</p>
+                <p>Pretendente exemplo 3</p>
+                <p>Pretendente exemplo 4</p>
+                <input type="button" value="Realizar processo de seleção">  
+        </div>
     </body>
 </html>
