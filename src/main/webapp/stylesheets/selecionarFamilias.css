@@ -8,14 +8,14 @@ body {
 
 h1 {
     text-align: center;
-    margin: 10px;
-    padding: 10px;
+    margin: 0.8em;
+    padding: 0.5em;
 }
 
 .cabecalho {
     background: #fff;
-    border-radius: 15px;
-    margin: 30px 60px;
+    border-radius: 1em;
+    margin: 2em 3.5em;
 }
 
 .cabecalho::after{
@@ -29,8 +29,8 @@ h1 {
 }
 
 .menu-de-navegacao ul{
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin-bottom: 0em;
+    margin-top: 0em;
 }
 
 .menu-de-navegacao ul li {
@@ -38,20 +38,21 @@ h1 {
 }
 
 .menu-de-navegacao ul li a {
-    padding: 10px 20px;
+    padding: 0.5em 1em;
     text-decoration: none;
     color: black;
-    line-height: 50px;
+    line-height: 3em;
 }
+
 
 .conteudo {
     background: #fff;
-    margin: 30px 60px;
-    border-radius: 15px;
-    padding: 15px;
+    margin: 2em 3.5em;
+    border-radius: 1em;
+    padding: 1.5em;
 }
 
-#pesquisa-de-pretendente {
-    margin: 10px 0px;
+.pesquisa-de-pretendente {
+    margin: 1em 0em;
 }
 

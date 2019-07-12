@@ -1,14 +1,14 @@
+/* nao chumbar numeropx, usar % ou numeroem DONE*/ 
+/* usar inline block para dispor divs na mesma "linha" DONE */
+/* Não use float! */
+/* Colocar css numa pasta de stylesheets e scripts js numa pasta scripts DONE*/
+
 *{
     font-family: 'Open Sans', sans-serif;
 }
 
 body {
     background: rgb(29, 153, 60);
-}
-
-h1 {
-    margin: 10px;
-    padding: 10px;
 }
 
 h1, h2, h3 {
@@ -26,10 +26,15 @@ td, th {
     border: 1px solid black;
 }
 
+h1 {
+    margin: 0.8em;
+    padding: 0.5em;
+}
+
 .cabecalho {
     background: #fff;
-    border-radius: 15px;
-    margin: 30px 60px;
+    border-radius: 1em;
+    margin: 2em 3.5em;
 }
 
 .cabecalho::after{
@@ -43,8 +48,8 @@ td, th {
 }
 
 .menu-de-navegacao ul{
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin-bottom: 0em;
+    margin-top: 0em;
 }
 
 .menu-de-navegacao ul li {
@@ -52,33 +57,34 @@ td, th {
 }
 
 .menu-de-navegacao ul li a {
-    padding: 10px 20px;
+    padding: 0.5em 1em;
     text-decoration: none;
     color: black;
-    line-height: 50px;
+    line-height: 3em;
 }
 
 .conteudo {
     background: #fff;
-    margin: 30px 60px;
-    border-radius: 15px;
-    padding: 15px;
+    margin: 2em 3.5em;
+    border-radius: 1em;
+    padding: 1em 2em;
+    max-width: 90%;
+    min-width: 10%;
+    display: inline-block;
 }
 
-#apresentacao-do-sistema {
+.apresentacao-do-sistema {
     display: block;
 }
 
-#criterios-de-classificacao {
-    margin-right: 5px;
+.criterios-de-classificacao {
+    margin-right: 1.5em;
     width: 40%;
-    max-width: 40%;
     float: left;
 }
 
-#criterios-de-desclassificacao {
-    margin-left: 5px;
+.criterios-de-desclassificacao {
+    margin-left: 1.5em;
     width: 40%;
-    max-width: 40%;
     float: right;
 }

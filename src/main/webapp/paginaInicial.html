@@ -1,11 +1,10 @@
 <!-- Objetivo desta página: aprender disposições gerais de uma página, navegação e tables -->
-<!-- Dificuldade: controlar a altura de onde começa o header-->
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <title>Dulce Domum</title>
-        <link rel="stylesheet" type="text/css" href="paginaInicial.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/paginaInicial.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -19,72 +18,79 @@
             </nav>
         </header>
 
-        <div class="conteudo" id="apresentacao-do-sistema">
+        <div class="conteudo apresentacao-do-sistema">
             <h2>O que é</h2>
             <p>Uma solução inovadora, rápida e prática para a seleção de famílias aptas a ganhar uma casa popular do governo.</p>
         </div>
         
-        <div class="conteudo" id="criterios-de-classificacao">
+        <div class="conteudo criterios-de-classificacao">
             <h2>Critérios para pontuar na seleção</h2>
 
             <h3>Renda</h3>
             <table>
-                <tr>
+                <thead>
                     <th>Renda total</th>
                     <th>Pontuação</th>
-                </tr>
-                <tr>
-                    <td>Até 900 reais</td>
-                    <td>5 pontos</td>
-                </tr>
-                <tr>
-                    <td>De 901 a 1500 reais</td>
-                    <td>3 pontos</td>
-                </tr>
-                <tr>
-                    <td>De 1501 a 2000 reais</td>
-                    <td>1 ponto</td>
-                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Até 900 reais</td>
+                        <td>5 pontos</td>
+                    </tr>
+                    <tr>
+                        <td>De 901 a 1500 reais</td>
+                        <td>3 pontos</td>
+                    </tr>
+                    <tr>
+                        <td>De 1501 a 2000 reais</td>
+                        <td>1 ponto</td>
+                    </tr>
+                </tbody>
             </table>
 
             <h3>Idade do pretendente</h3>
             <table>
-                <tr>
+                <thead>
                     <th>Idade do pretendente da família</th>
                     <th>Pontuação</th>
-                </tr>
-                <tr>
-                    <td>Igual ou acima de 45 anos</td>
-                    <td>3 pontos</td>
-                </tr>
-                <tr>
-                    <td>De 30 a 44 anos</td>
-                    <td>2 pontos</td>
-                </tr>
-                <tr>
-                    <td>Abaixo de 30 anos</td>
-                    <td>1 ponto</td>
-                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Igual ou acima de 45 anos</td>
+                        <td>3 pontos</td>
+                    </tr>
+                    <tr>
+                        <td>De 30 a 44 anos</td>
+                        <td>2 pontos</td>
+                    </tr>
+                    <tr>
+                        <td>Abaixo de 30 anos</td>
+                        <td>1 ponto</td>
+                    </tr>
+                </tbody>
             </table>
 
             <h3>Quantidade de dependentes</h3>
+
             <table>
-                <tr>
+                <thead>
                     <th>Quantidade de dependentes menores de 18 anos</th>
                     <th>Pontuação</th>
-                </tr>
-                <tr>
-                    <td>3 ou mais dependentes</td>
-                    <td>3 pontos</td>
-                </tr>
-                <tr>
-                    <td>1 ou 2 dependentes</td>
-                    <td>2 pontos</td>
-                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3 ou mais dependentes</td>
+                        <td>3 pontos</td>
+                    </tr>
+                    <tr>
+                        <td>1 ou 2 dependentes</td>
+                        <td>2 pontos</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
-        <div class="conteudo" id="criterios-de-desclassificacao">
+        <div class="conteudo criterios-de-desclassificacao">
             <h2>Critérios de desclassificação</h2>
              <ul>
                 <li>A família já possui uma casa.</li>

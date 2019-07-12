@@ -8,14 +8,14 @@ body {
 
 h1 {
     text-align: center;
-    margin: 10px;
-    padding: 10px;
+    margin: 0.8em;
+    padding: 0.5em;
 }
 
 .cabecalho {
     background: #fff;
-    border-radius: 15px;
-    margin: 30px 60px;
+    border-radius: 1em;
+    margin: 2em 3.5em;
 }
 
 .cabecalho::after{
@@ -29,8 +29,8 @@ h1 {
 }
 
 .menu-de-navegacao ul{
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin-bottom: 0em;
+    margin-top: 0em;
 }
 
 .menu-de-navegacao ul li {
@@ -38,25 +38,34 @@ h1 {
 }
 
 .menu-de-navegacao ul li a {
-    padding: 10px 20px;
+    padding: 0.5em 1em;
     text-decoration: none;
     color: black;
-    line-height: 50px;
+    line-height: 3em;
 }
 
 .formulario{
     background: #fff;
-    margin: 10px 60px;
-    padding: 10px 40px;
-    border-radius: 15px;
+    margin: 2em 3.5em;
+    padding: 1em 2em;
+    border-radius: 1em;
 }
 
 .formulario input,select {
-    margin-left: 200px;
-    margin-top: 20px;
+    margin-left: 15em;
+    margin-top: 1em;
 }
 
 .formulario label {
     position: absolute;
-    margin-top: 20px;
+    margin-top: 1em;
+}
+
+.botao {
+    display: inline-block;
+    margin-top: 2em;
+}
+
+.botao-de-envio {
+    margin-left: 10%;
 }
