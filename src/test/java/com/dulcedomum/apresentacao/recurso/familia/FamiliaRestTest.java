@@ -74,7 +74,7 @@ public class FamiliaRestTest extends TesteDeIntegracao {
     private List<PessoaDaFamiliaHttpDTO> criarPessoasDaFamiliaHttpDTOs() {
         PessoaDaFamiliaHttpDTO pessoaDaFamiliaHttpDTO = new PessoaDaFamiliaHttpDTO();
         pessoaDaFamiliaHttpDTO.nome = "Elliot Alderson";
-        pessoaDaFamiliaHttpDTO.tipo = "pretendente";
+        pessoaDaFamiliaHttpDTO.tipo = "Pretendente";
         pessoaDaFamiliaHttpDTO.dataDeNascimento = LocalDate.of(1986, 9, 17);
         pessoaDaFamiliaHttpDTO.valorDaRenda = BigDecimal.valueOf(1500.0);
         return singletonList(pessoaDaFamiliaHttpDTO);

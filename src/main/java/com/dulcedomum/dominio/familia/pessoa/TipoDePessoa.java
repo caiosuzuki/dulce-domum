@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum TipoDePessoa {
-    PRETENDENTE("pretendente"),
-    DEPENDENTE("dependente"),
-    CONJUGE("conjuge");
+    PRETENDENTE("Pretendente"),
+    DEPENDENTE("Dependente"),
+    CONJUGE("Cônjuge");
 
     private String descricao;
 
