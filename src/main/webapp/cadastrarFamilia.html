@@ -26,20 +26,20 @@
                 <option>Está concorrendo em outro processo de seleção.</option>
                 <option>Nenhuma das opções acima.</option>
             </select><br>
-            <form class="formulario-de-pessoa-da-familia" data-js="formulario-de-pessoa-familia" action="" onsubmit="">
+            <form class="formulario-de-pessoa-da-familia" data-js="formulario-de-pessoa-familia">
                 <h2>Pessoa da família</h2>
                 <label for="nome-da-pessoa">Nome:</label>
-                <input type="text" id="nome-da-pessoa"><br>
+                <input type="text" data-js="nome" id="nome-da-pessoa"><br>
                 <label for="tipo-de-pessoa">Tipo:</label>
-                <select name="" id="tipo-de-pessoa">
+                <select name="" data-js="tipo" id="tipo-de-pessoa">
                     <option>Pretendente</option>
                     <option>Cônjuge</option>
                     <option>Dependente</option>
                 </select><br>
                 <label for="data-de-nascimento-pessoa">Data de nascimento:</label>
-                <input type="date" id="data-de-nascimento-pessoa"><br>
+                <input type="date" data-js="dataDeNascimento" id="data-de-nascimento-pessoa"><br>
                 <label for="renda-da-pessoa">Renda:</label>
-                <input type="number" id="renda-da-pessoa"><br>
+                <input type="number" data-js="valorDaRenda" id="renda-da-pessoa"><br>
             </form>
         </div>
         <button class="botao" onclick="cadastrarMaisUmaPessoaDaFamilia()">Cadastrar mais uma pessoa na família</button>
