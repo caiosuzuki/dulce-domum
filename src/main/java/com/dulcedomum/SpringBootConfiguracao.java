@@ -1,5 +1,6 @@
 package com.dulcedomum;
 
+import com.dulcedomum.apresentacao.recurso.base.CrossDomainFilterProvider;
 import com.dulcedomum.apresentacao.restbase.MapeadorDeJsonJaxRs;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -31,6 +32,7 @@ public class SpringBootConfiguracao {
                     e.printStackTrace();
                 }
             }
+            register(CrossDomainFilterProvider.class);
             register(MapeadorDeJsonJaxRs.class);
         }
     }

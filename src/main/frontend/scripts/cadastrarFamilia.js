@@ -8,8 +8,21 @@ function enviarCadastroDeFamilia() {
     const listaDeDadosDasPessoasDaFamilia = formulariosDePessoas.map(formularioDaPessoa => obterJsonDosDadosDaPessoa(formularioDaPessoa));
     const statusDaFamilia = document.querySelector('[data-js="statusDaFamilia"]').value;
     const dadosParaCadastroDaFamilia = Object.assign({}, {pessoasDaFamilia: listaDeDadosDasPessoasDaFamilia}, {status: statusDaFamilia});
-    // TODO: requisição POST em /api/familia passando dadosParaCadastroDaFamilia em JSON
+
+    axios.post('http://localhost:8080/api/familia', dadosParaCadastroDaFamilia)
+    .then((resposta) => {
+        window.alert('Família adicionada com sucesso!', resposta);
+    })
+    .catch((erro) => {
+        window.alert('Ocorreu um erro ao cadastrar a família. ', erro);
+    });
+    
 }
+
+response.setHeader("Access-Control-Allow-Origin", "*");
+response.setHeader("Access-Control-Allow-Credentials", "true");
+response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 
 function obterJsonDosDadosDaPessoa(formularioDaPessoa) {
     const elementosDoFormularioDaPessoa = formularioDaPessoa.elements;
