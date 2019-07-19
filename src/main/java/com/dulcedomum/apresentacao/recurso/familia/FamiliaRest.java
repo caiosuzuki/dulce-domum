@@ -6,7 +6,10 @@ import com.dulcedomum.aplicacao.comando.familia.adicionafamilia.AdicionarFamilia
 import com.dulcedomum.aplicacao.comando.familia.adicionafamilia.PessoaDaFamilia;
 import com.dulcedomum.aplicacao.comando.familia.selecionafamilias.SelecionaFamilias;
 import com.dulcedomum.aplicacao.comando.familia.selecionafamilias.SelecionarFamilias;
+import com.dulcedomum.aplicacao.consulta.ConsultaFamilias;
+import com.dulcedomum.aplicacao.consulta.FamiliaDTO;
 import com.dulcedomum.apresentacao.recurso.base.ConfirmacaoDeSucessoHttpDTO;
+import com.dulcedomum.apresentacao.restbase.ColecaoRest;
 import com.dulcedomum.apresentacao.restbase.ElementoRest;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,6 +30,17 @@ public class FamiliaRest {
 
     @Autowired
     private SelecionaFamilias selecionaFamilias;
+
+    @Autowired
+    private ConsultaFamilias consultaFamilias;
+
+    @GET
+    public Response obterTodas() {
+        List<FamiliaDTO> familiasDTOs = consultaFamilias.buscarTodas();
+        List<ElementoRest> elementosRest = familiasDTOs.stream().map(familiaDTO -> new ElementoRest(familiaDTO)).collect(toList());
+        ColecaoRest colecaoRest = new ColecaoRest(elementosRest);
+        return Response.ok().entity(colecaoRest).build();
+    }
 
     @POST
     public Response adicionarFamilia(AdicionaFamiliaHttpDTO httpDTO) {

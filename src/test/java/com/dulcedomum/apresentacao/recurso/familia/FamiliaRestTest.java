@@ -1,14 +1,17 @@
 package com.dulcedomum.apresentacao.recurso.familia;
 
+import com.dulcedomum.aplicacao.consulta.FamiliaDTO;
 import com.dulcedomum.apresentacao.recurso.base.ConfirmacaoDeSucessoHttpDTO;
+import com.dulcedomum.apresentacao.restbase.ColecaoRest;
+import com.dulcedomum.apresentacao.restbase.DesserializadorColecaoRest;
+import com.dulcedomum.apresentacao.restbase.DesserializadorElementoRest;
+import com.dulcedomum.apresentacao.restbase.ElementoRest;
 import com.dulcedomum.base.TesteDeIntegracao;
 import com.dulcedomum.dominio.familia.Familia;
 import com.dulcedomum.dominio.familia.FamiliaBuilder;
 import com.dulcedomum.dominio.familia.StatusDaFamilia;
 import com.dulcedomum.dominio.familia.pessoa.Pessoa;
 import com.dulcedomum.infraestrutura.familia.FamiliaRepository;
-import com.dulcedomum.apresentacao.restbase.DesserializadorElementoRest;
-import com.dulcedomum.apresentacao.restbase.ElementoRest;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -62,6 +66,22 @@ public class FamiliaRestTest extends TesteDeIntegracao {
 
         assertThat(primeiraFamiliaSelecionada.getDadosDaSelecao()).isNotNull();
         assertThat(segundaFamiliaSelecionada.getDadosDaSelecao()).isNotNull();
+    }
+
+    @Test
+    public void deveConsultarAsFamilias() {
+        Familia primeiraFamilia = FamiliaBuilder.novo().comStatus(StatusDaFamilia.CADASTRO_VALIDO).criar();
+        familiaRepository.save(primeiraFamilia);
+        Familia segundaFamilia = FamiliaBuilder.novo().comStatus(StatusDaFamilia.CADASTRO_VALIDO).criar();
+        familiaRepository.save(segundaFamilia);
+
+        ResponseEntity<String> response = this.restTemplate.getForEntity(RECURSO, String.class);
+        ColecaoRest colecaoRest = DesserializadorColecaoRest.criar(FamiliaDTO.class).desserializar(response.getBody());
+        List<FamiliaDTO> familiasDTOs = colecaoRest.getElementos().stream().map(elementoRest -> (FamiliaDTO) elementoRest.getConteudo()).collect(Collectors.toList());
+
+        Assertions.assertThat(familiasDTOs).hasSize(2);
+        comparaAtributosDePessoa(primeiraFamilia.getPessoas().get(0), familiasDTOs.get(0).pessoasDaFamiliaHttpDTOs.get(0));
+        comparaAtributosDePessoa(segundaFamilia.getPessoas().get(0), familiasDTOs.get(1).pessoasDaFamiliaHttpDTOs.get(0));
     }
 
     private AdicionaFamiliaHttpDTO criarAdicionaFamiliaHttpDTO() {
