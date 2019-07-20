@@ -6,7 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <title>Seleção de famílias</title>
     </head>
-    <body>
+    <body onload="montaListaComTodosOsPretendentesDasFamilias()">
         <header class="cabecalho">
             <h1>Seleção de famílias</h1>
             <nav class="menu-de-navegacao">
@@ -18,14 +18,14 @@
         </header>
         
         <div class="conteudo">
-                <label for="pesquisa-de-pretendente">Digite o pretendente da família a ser incluída na seleção:</label><br>
-                <input type="search" class="pesquisa-de-pretendente" placeholder="Nome do pretendente"><br>
-                <h2>Pretendentes das famílias que já estão incluídas na seleção: </h2>
-                <p>Pretendente exemplo 1</p>
-                <p>Pretendente exemplo 2</p>
-                <p>Pretendente exemplo 3</p>
-                <p>Pretendente exemplo 4</p>
-                <button>Realizar processo de seleção</button>
+                <h2>Selecione os pretendentes das famílias que participarão do processo de seleção: </h2>
+
+                <ul data-js="lista-de-pretendentes-das-familias">
+                </ul>
+
+                <button onclick="realizarProcessoDeSelecao()">Realizar processo de seleção</button>
         </div>
     </body>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script src="./scripts/selecionarFamilias.js"></script>
 </html>

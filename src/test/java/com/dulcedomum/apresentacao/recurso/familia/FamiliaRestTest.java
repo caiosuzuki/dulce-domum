@@ -80,8 +80,8 @@ public class FamiliaRestTest extends TesteDeIntegracao {
         List<FamiliaDTO> familiasDTOs = colecaoRest.getElementos().stream().map(elementoRest -> (FamiliaDTO) elementoRest.getConteudo()).collect(Collectors.toList());
 
         Assertions.assertThat(familiasDTOs).hasSize(2);
-        comparaAtributosDePessoa(primeiraFamilia.getPessoas().get(0), familiasDTOs.get(0).pessoasDaFamiliaHttpDTOs.get(0));
-        comparaAtributosDePessoa(segundaFamilia.getPessoas().get(0), familiasDTOs.get(1).pessoasDaFamiliaHttpDTOs.get(0));
+        Assertions.assertThat(familiasDTOs.get(0).id).isEqualTo(primeiraFamilia.getId());
+        Assertions.assertThat(familiasDTOs.get(1).id).isEqualTo(segundaFamilia.getId());
     }
 
     private AdicionaFamiliaHttpDTO criarAdicionaFamiliaHttpDTO() {

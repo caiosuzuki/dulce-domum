@@ -28,9 +28,10 @@ public class ConsultaFamilias {
 
     private FamiliaDTO montarFamiliaDTO(Familia familia) {
         FamiliaDTO familiaDTO = new FamiliaDTO();
+        familiaDTO.id = familia.getId();
         familiaDTO.status = familia.getStatus().getDescricao();
-        familiaDTO.pessoasDaFamiliaHttpDTOs = new ArrayList<>();
-        familiaDTO.pessoasDaFamiliaHttpDTOs = familia.getPessoas().stream().map(pessoa -> montarPessoaDaFamiliaHttpDTO(pessoa)).collect(Collectors.toList());
+        familiaDTO.pessoas = new ArrayList<>();
+        familiaDTO.pessoas = familia.getPessoas().stream().map(pessoa -> montarPessoaDaFamiliaHttpDTO(pessoa)).collect(Collectors.toList());
         return familiaDTO;
     }
 
