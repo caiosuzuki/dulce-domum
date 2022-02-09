@@ -23,7 +23,7 @@
 
         <!-- Versões das dependências -->
         <org.hsqldb>2.4.0</org.hsqldb>
-        <hibernate.version>5.4.2.Final</hibernate.version>
+        <hibernate.version>5.4.24.Final</hibernate.version>
         <assertj.version>3.11.1</assertj.version>
         <mockito.version>1.9.5</mockito.version>
     </properties>
